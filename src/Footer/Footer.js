@@ -1,12 +1,12 @@
 import React from "react";
-import "./App.css";
-import ContactIcon from "./images/contact.png";
-import MailIcon from "./images/message.PNG";
-import AddressIcon from "./images/map.png";
-import FacebookIcon from "./images/facebook.png";
-import TwitterIcon from "./images/twitter.png";
-import InstagramIcon from "./images/instagram.png";
-import LinkedInIcon from "./images/linkedin.png";
+import "../css/App.css";
+import ContactIcon from "../images/contact.png";
+import MailIcon from "../images/message.PNG";
+import AddressIcon from "../images/map.png";
+import FacebookIcon from "../images/facebook.png";
+import TwitterIcon from "../images/twitter.png";
+import InstagramIcon from "../images/instagram.png";
+import LinkedInIcon from "../images/linkedin.png";
 
 function Footer() {
   return (

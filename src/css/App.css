@@ -56,7 +56,7 @@
   position: absolute;
 }
 .myFooter {
-  background-image: url("./images/wave.gif");
+  background-image: url("../images/wave.gif");
   background-size: cover;
   background-repeat: no-repeat;
   margin-bottom: -200px;

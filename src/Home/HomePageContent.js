@@ -1,11 +1,11 @@
 import React from "react";
-import lib6Img from "./images/library6.jpg";
-import "./App.css";
-import "./index.css";
+import lib6Img from "../images/library6.jpg";
+import "../css/App.css";
+import "../css/index.css";
 import ReactPlayer from "react-player";
-import IntroVideo from "./images/Library Intro ‑ Made with FlexClip.mp4";
+import IntroVideo from "../images/Library Intro ‑ Made with FlexClip.mp4";
 import { Wave } from "react-animated-text";
-import AlbertEinstein from "./images/Einstein.jpg";
+import AlbertEinstein from "../images/Einstein.jpg";
 
 function HomePageContent() {
   return (

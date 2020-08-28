@@ -27,7 +27,8 @@
   margin-right: -30px;
 }
 #gradientdiv {
-  background-image: url("./images/cover4.PNG");
+  /* background-image: url("./images/cover4.PNG"); */
+  background-image: url("../images/cover4.PNG");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -114,7 +115,7 @@ input {
   transition: 0.2s;
 }
 #logindiv {
-  background-image: url("./images/cover10.jpg");
+  background-image: url("../images/cover10.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -131,7 +132,7 @@ input {
   margin-bottom: -43px;
 }
 #admindiv {
-  background-image: url("./images/cover3.jpg");
+  background-image: url("../images/cover3.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }

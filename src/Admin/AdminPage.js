@@ -1,32 +1,30 @@
 import React from "react";
-import "./index.css";
-import SignUpPageVector from "./images/library4.jpg";
-import UserIcon from "./images/username.png";
-import RegIcon from "./images/registration.PNG";
-import GmailIcon from "./images/email.PNG";
-import PassIcon from "./images/password.PNG";
-import GoogleIcon from "./images/google.PNG";
-import FacebookIcon from "./images/facebook.png";
+import "../css/index.css";
+import AdminPageVector from "../images/library3.jpg";
+import UserIcon from "../images/username.png";
+import PassIcon from "../images/password.PNG";
+import GoogleIcon from "../images/google.PNG";
+import FacebookIcon from "../images/facebook.png";
 
-function SignUpPage() {
+function AdminPage() {
   return (
     <div>
       <div className="container-fluid signUpDiv">
         <div className="row">
           <div className="col-lg-6 col-md-6 col-sm-12">
-            <div id="vectordiv">
+            <div id="adminVectorDiv">
               <img
                 id="vector"
-                src={SignUpPageVector}
+                src={AdminPageVector}
                 width={"100%"}
-                height={"550px"}
+                height={"630px"}
                 alt="vector"
               />
             </div>
           </div>
-          <div id="gradientdiv" className="col-lg-6 col-md-6 col-sm-12">
+          <div id="admindiv" className="col-lg-6 col-md-6 col-sm-12">
             <div className="row justify-content-center text-center signUpDiv">
-              <h3 id="signUpHeading">User SignUp</h3>
+              <h3 id="signUpHeading">Admin Login</h3>
             </div>
             <div className="row justify-content-center text-center">
               <form
@@ -44,35 +42,7 @@ function SignUpPage() {
                   className="w-auto mt-4 mr-4"
                   name="username"
                   type="name"
-                  placeholder="Your Name"
-                  spellCheck={"false"}
-                />
-                <br />
-                <img
-                  className="formIcon rounded-circle"
-                  src={RegIcon}
-                  width={"40px"}
-                  alt="Reg no."
-                />
-                <input
-                  className="w-auto mr-4"
-                  name="regno"
-                  type="number"
-                  placeholder="Registration No."
-                  spellCheck={"false"}
-                />
-                <br />
-                <img
-                  className="formIcon rounded-circle"
-                  src={GmailIcon}
-                  width={"40px"}
-                  alt="Gmail"
-                />
-                <input
-                  className="w-auto mr-4"
-                  name="email"
-                  type="email"
-                  placeholder="Enter Gmail"
+                  placeholder="User Name"
                   spellCheck={"false"}
                 />
                 <br />
@@ -86,12 +56,12 @@ function SignUpPage() {
                   className="w-auto mr-4"
                   name="password"
                   type="password"
-                  placeholder="Your Password"
+                  placeholder="Password"
                   spellCheck={"false"}
                 />
                 <br /> <br />
-                <button type="submit" className="myBtn">
-                  Submit
+                <button type="submit" className="myBtn mb-3">
+                  Login
                 </button>
               </form>
             </div>
@@ -104,18 +74,18 @@ function SignUpPage() {
                     width={"40px"}
                     alt="Google"
                   />
-                  Sign In With Google
+                  Login With Google
                 </button>
               </div>
               <div className="col">
-                <button className="signInButton mb-3">
+                <button className="signInButton">
                   <img
                     className="rounded-circle"
                     src={FacebookIcon}
                     width={"40px"}
                     alt="Facebook"
                   />
-                  Sign In With Facebook
+                  Login With Facebook
                 </button>
               </div>
             </div>
@@ -126,4 +96,4 @@ function SignUpPage() {
   );
 }
 
-export default SignUpPage;
+export default AdminPage;

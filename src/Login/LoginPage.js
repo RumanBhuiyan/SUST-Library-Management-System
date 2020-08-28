@@ -1,30 +1,33 @@
 import React from "react";
-import "./index.css";
-import AdminPageVector from "./images/library3.jpg";
-import UserIcon from "./images/username.png";
-import PassIcon from "./images/password.PNG";
-import GoogleIcon from "./images/google.PNG";
-import FacebookIcon from "./images/facebook.png";
+import "../css/index.css";
+import LoginPageVector from "../images/library9.jpg";
+import UserIcon from "../images/username.png";
+import PassIcon from "../images/password.PNG";
+import GoogleIcon from "../images/google.PNG";
+import FacebookIcon from "../images/facebook.png";
+import { useHistory } from "react-router-dom";
 
-function AdminPage() {
+function LoginPage() {
+  let history = useHistory();
+
   return (
     <div>
       <div className="container-fluid signUpDiv">
         <div className="row">
           <div className="col-lg-6 col-md-6 col-sm-12">
-            <div id="adminVectorDiv">
+            <div id="loginVectorDiv">
               <img
                 id="vector"
-                src={AdminPageVector}
+                src={LoginPageVector}
                 width={"100%"}
-                height={"630px"}
+                height={"680px"}
                 alt="vector"
               />
             </div>
           </div>
-          <div id="admindiv" className="col-lg-6 col-md-6 col-sm-12">
+          <div id="logindiv" className="col-lg-6 col-md-6 col-sm-12">
             <div className="row justify-content-center text-center signUpDiv">
-              <h3 id="signUpHeading">Admin Login</h3>
+              <h3 id="signUpHeading">User Login</h3>
             </div>
             <div className="row justify-content-center text-center">
               <form
@@ -62,6 +65,14 @@ function AdminPage() {
                 <br /> <br />
                 <button type="submit" className="myBtn mb-3">
                   Login
+                </button>{" "}
+                <br />
+                <h3>Don't have an account?</h3>
+                <button
+                  className="myBtn mb-3 w-50"
+                  onClick={() => history.push("/signup")}
+                >
+                  SignUp Here
                 </button>
               </form>
             </div>
@@ -96,4 +107,4 @@ function AdminPage() {
   );
 }
 
-export default AdminPage;
+export default LoginPage;

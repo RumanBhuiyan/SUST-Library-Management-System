@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import "./App.css";
-import SustLogo from "./images/sust2.PNG";
+import "../css/App.css";
+import SustLogo from "../images/sust2.PNG";
 import gsap from "gsap";
-import HomePageContent from "./HomePageContent";
-import BooksPage from "./BooksPage";
-import SignUpPage from "./SignUpPage";
-import LoginPage from "./LoginPage";
-import AdminPage from "./AdminPage";
+import HomePageContent from "../Home/HomePageContent";
+import BooksPage from "../Books/BooksPage";
+import SignUpPage from "../SignUp/SignUpPage";
+import LoginPage from "../Login/LoginPage";
+import AdminPage from "../Admin/AdminPage";
 import { BrowserRouter, Route, Switch, NavLink } from "react-router-dom";
 
 function Navbar() {
