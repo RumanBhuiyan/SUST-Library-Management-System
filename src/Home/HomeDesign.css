@@ -1,0 +1,21 @@
+.lib6 {
+  width: 100%;
+  height: auto;
+}
+.homecontentdiv {
+  text-align: center;
+  justify-content: center;
+  color: #ff4b2b;
+  margin-bottom: -8px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  font-family: Lobster two;
+  font-size: 1.8755rem;
+}
+.einstein {
+  opacity: 1;
+  transition: width 2s, height 2s, transform 1s;
+}
+.einstein:hover {
+  transform: rotate(360deg);
+}

@@ -9,12 +9,10 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
   background: linear-gradient(to bottom, #11998e, #38ef7d);
-  /* outline: 1px solid slategrey; */
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  /* border-radius: 10px; */
 }
 
 /* text selection color */

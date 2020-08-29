@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./css/App.css";
+import "./css/App.css"; //not imported components of this file will be designed in App.css
 import Loader from "./Loader/Loader";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";

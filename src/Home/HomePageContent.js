@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import gsap from "gsap";
 import lib6Img from "../images/library6.jpg";
-import "../css/App.css";
-import "../css/index.css";
 import ReactPlayer from "react-player";
 import IntroVideo from "../images/Library Intro ‑ Made with FlexClip.mp4";
 import { Wave } from "react-animated-text";
-import AlbertEinstein from "../images/Einstein.jpg";
+import HomeImageContent from "./HomeImageContent";
 
 function HomePageContent() {
+  useEffect(() => {
+    gsap.from(".lib6", {
+      opacity: 0,
+      marginLeft: "-200",
+      duration: 1,
+    });
+  }, []);
+
   return (
     <div>
       <div>
@@ -28,33 +35,7 @@ function HomePageContent() {
             controls={true}
           />
         </div>
-        <div className="row quotediv">
-          <div className="col-lg-5 col-md-6 col-sm-12 einstein">
-            <img
-              className="rounded-circle"
-              src={AlbertEinstein}
-              alt="ALbert Einstein"
-              width={"250px"}
-            />
-          </div>
-          <div className="col-lg-7 col-md-6 col-sm-12 justify-content-center text-center">
-            <div>
-              <Wave
-                className="text-center"
-                text="Imagination is more important than your knowledge"
-                speed={15}
-                effect="fadeOut"
-              />
-            </div>
-            <div>
-              <Wave
-                className="text-center"
-                text="-Albert Einstein"
-                speed={15}
-              />
-            </div>
-          </div>
-        </div>
+        <HomeImageContent />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import myLoader from "../images/Ball-loader.png";
-import "../css/App.css";
+import "./Loader.css";
 
 function Loaders() {
   return (

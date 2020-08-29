@@ -1,0 +1,64 @@
+.myFooter {
+  background-image: url("../images/wave.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-bottom: -200px;
+  padding-bottom: 20px;
+  min-height: 100%;
+  position: relative;
+  margin-top: auto;
+}
+hr {
+  margin-left: 47%;
+  margin-right: 47%;
+  border-top: 8px dotted black;
+  opacity: 0.6;
+}
+.footerAbout {
+  background-color: #3c454e;
+  opacity: 1;
+  color: #ff4b2b;
+  font-family: Cambria;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 2.5rem;
+  letter-spacing: 3px;
+}
+.footerSocialDiv {
+  opacity: 0.9;
+}
+.footerImage {
+  transition: width 1s, height 1s, transform 1s;
+}
+.footerImage:hover {
+  transform: rotate(720deg);
+}
+.footer-contact-text {
+  justify-content: center;
+  text-align: center;
+  color: #ee0979;
+  font-size: 20px;
+}
+.footer-contact-text:hover {
+  color: goldenrod;
+}
+.socialImg {
+  margin-top: 1rem;
+  width: 4rem;
+  background-color: #343a40;
+  transition: width 1s, height 1s, transform 1s;
+}
+.socialImg:hover {
+  transform: rotate(720deg);
+}
+.socialIcons {
+  background-color: #343a40;
+  height: 7.5rem;
+}
+#copyright {
+  font-family: Fira Code;
+  font-size: 20px;
+  letter-spacing: 0;
+  margin-bottom: -20px;
+  color: #ff4b2b;
+}
