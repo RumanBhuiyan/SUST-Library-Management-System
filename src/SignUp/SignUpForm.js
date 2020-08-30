@@ -6,6 +6,7 @@ import GmailIcon from "../images/email.PNG";
 import PassIcon from "../images/password.PNG";
 import GoogleIcon from "../images/google.PNG";
 import FacebookIcon from "../images/facebook.png";
+//import Ripples from "react-ripples"; //for ripple effects in buttons
 
 function SignUpForm() {
   return (

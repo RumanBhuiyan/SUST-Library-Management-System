@@ -36,7 +36,7 @@ function Navbar() {
           <Route path="/admin">
             <AdminPage />
           </Route>
-          <Route exact path="/">
+          <Route exact path="/*">
             <HomePageContent />
           </Route>
         </Switch>

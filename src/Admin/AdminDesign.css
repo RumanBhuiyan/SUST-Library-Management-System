@@ -10,6 +10,7 @@
   background-repeat: no-repeat;
 }
 .adminFullDiv {
+  overflow: hidden;
   font-family: Lobster Two;
   color: aliceblue;
 }
@@ -73,4 +74,44 @@ input {
   box-shadow: none;
   width: 13.8rem;
   transition: 0.2s;
+}
+.taskdiv {
+  /* margin-left: 10px; */
+  /* margin-left: 5px; */
+  margin-left: 25px;
+  margin-top: 12px !important;
+  margin-bottom: 20px !important;
+  justify-content: center;
+  height: 120px;
+  width: 85%;
+  color: aliceblue;
+  /* font-family: Cambria Math; */
+  font-family: Lobster Two;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 16px;
+  font-style: italic;
+  background: linear-gradient(to right, #bc4e9c, #f80759);
+  /* background: linear-gradient(to right, #c31432, #240b36); */
+  /* background-color: #1ba94c; */
+  border-radius: 8px;
+  /* border: 1px solid black; */
+  padding: 15px;
+}
+
+.taskdiv:hover {
+  cursor: pointer;
+  font-style: normal;
+  background: linear-gradient(to right, #c31432, #240b36);
+  /* background: linear-gradient(to right, #bc4e9c, #f80759); */
+  /* background: linear-gradient(to right, #c31432, #240b36); */
+}
+.admintext {
+  font-family: Lobster Two;
+  font-style: italic;
+  font-size: 35px;
+  color: #efbb35;
+  text-align: center;
+  margin-top: 250px;
+  letter-spacing: 2px;
 }
