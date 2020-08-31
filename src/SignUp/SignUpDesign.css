@@ -17,15 +17,22 @@
   background: linear-gradient(to right, #fc466b, #3f5efb);
   padding: 20px;
   border-radius: 100%;
+  box-shadow: -14px 10px 7px 0px black;
 }
 #signUpHeading:hover {
   background: linear-gradient(to right, #11998e, #38ef7d);
   box-shadow: none;
+  transition: 0.5s;
 }
 .signUpForm {
   margin-top: 20px;
   background-color: #474b5c;
   border-radius: 25px;
+  box-shadow: -14px 10px 7px 0px black;
+}
+.signUpForm:hover {
+  box-shadow: none;
+  transition: 0.5s;
 }
 input {
   margin-top: 10px;
