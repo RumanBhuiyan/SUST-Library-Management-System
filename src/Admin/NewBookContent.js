@@ -23,7 +23,6 @@ function NewBookContent() {
         <input
           name="bookname"
           placeholder="Book Name"
-          style={{ marginBottom: "10px", marginTop: "20px" }}
           spellCheck={false}
           style={{ width: "90%", overflow: "hidden" }}
         />
@@ -40,7 +39,6 @@ function NewBookContent() {
         <input
           name="authorname"
           placeholder="Author Name"
-          style={{ marginBottom: "10px" }}
           spellCheck={false}
           style={{ width: "90%", overflow: "hidden" }}
         />
@@ -57,7 +55,6 @@ function NewBookContent() {
         <input
           name="imageurl"
           placeholder="Book Image URL"
-          style={{ marginBottom: "10px" }}
           spellCheck={false}
           style={{ width: "90%", overflow: "hidden" }}
         />

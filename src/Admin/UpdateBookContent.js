@@ -23,7 +23,6 @@ function UpdateBookContent() {
         <input
           name="bookName"
           placeholder="Book Name"
-          style={{ marginBottom: "10px", marginTop: "20px" }}
           spellCheck={false}
           style={{ width: "90%", overflow: "hidden" }}
         />
@@ -40,7 +39,6 @@ function UpdateBookContent() {
         <input
           name="prevUserName"
           placeholder="gmail or reg.no."
-          style={{ marginBottom: "10px" }}
           spellCheck={false}
           style={{ width: "90%", overflow: "hidden" }}
         />
@@ -57,7 +55,6 @@ function UpdateBookContent() {
         <input
           name="currentUser"
           placeholder="gmail or reg.no."
-          style={{ marginBottom: "10px" }}
           spellCheck={false}
           style={{ width: "90%", overflow: "hidden" }}
         />

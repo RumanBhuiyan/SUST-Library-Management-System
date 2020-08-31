@@ -22,7 +22,6 @@ function RemoveBookContent() {
         <input
           name="bookname"
           placeholder="Book Name"
-          style={{ marginBottom: "10px", marginTop: "20px" }}
           spellCheck={false}
           style={{ width: "90%", overflow: "hidden" }}
         />
@@ -39,7 +38,6 @@ function RemoveBookContent() {
         <input
           name="authorname"
           placeholder="Author Name"
-          style={{ marginBottom: "10px" }}
           spellCheck={false}
           style={{ width: "90%", overflow: "hidden" }}
         />

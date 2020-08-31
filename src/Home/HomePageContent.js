@@ -13,6 +13,7 @@ function HomePageContent() {
       marginLeft: "-200",
       duration: 1,
     });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   return (
