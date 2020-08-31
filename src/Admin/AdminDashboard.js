@@ -5,9 +5,12 @@ import RemoveIcon from "../images/remove.png";
 import UpdateIcon from "../images/update.png";
 import MailIcon from "../images/mail.png";
 import LogoutIcon from "../images/logout.png";
+import NewBookContent from "./NewBookContent";
+import RemoveBookContent from "./RemoveBookContent";
+import UpdateBookContent from "./UpdateBookContent";
+import SendMailContent from "./SendMailContent";
+import LogoutContent from "./LogoutContent";
 import { Wave } from "react-animated-text";
-
-import { Redirect } from "react-router-dom";
 
 function AdminDashboard() {
   const [content, setContent] = useState(0);
@@ -40,7 +43,6 @@ function AdminDashboard() {
   }
   return (
     <div className="overflow-hidden">
-      {/* Dashboard Buttons */}
       <div className="row">
         <div className="col-4 bg-dark justify-content-center text-center">
           <div
@@ -82,7 +84,6 @@ function AdminDashboard() {
           </div>
         </div>
         <div className=" col-8 bg-dark justify-content-center text-center">
-          {/* Content of Buttons */}
           {renderedHtml}
         </div>
       </div>
@@ -91,39 +92,3 @@ function AdminDashboard() {
 }
 
 export default AdminDashboard;
-
-function NewBookContent() {
-  return (
-    <div>
-      <h1>New Book</h1>
-    </div>
-  );
-}
-function RemoveBookContent() {
-  return (
-    <div>
-      <h1>Remove Book</h1>
-    </div>
-  );
-}
-function UpdateBookContent() {
-  return (
-    <div>
-      <h1>Update Book</h1>
-    </div>
-  );
-}
-function SendMailContent() {
-  return (
-    <div>
-      <h1>Send Mail</h1>
-    </div>
-  );
-}
-function LogoutContent() {
-  return (
-    <div>
-      <Redirect to="/" />
-    </div>
-  );
-}
