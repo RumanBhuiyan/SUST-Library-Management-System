@@ -72,3 +72,9 @@ function NewBookContent() {
 }
 
 export default NewBookContent;
+
+//short notes of realizing at the time of doing this project
+// responsive button : width: auto; height : auto
+// dont use px rather use rem that doesn't affect sizes
+// instead of margin-left : 5px write margin-left : 5rem
+//N.B: em affects other sizes but rem doesn't
