@@ -10,35 +10,45 @@ function RemoveBookContent() {
   }, []);
   return (
     <div className="newbookdiv w-sm-100">
-      <img
-        className="rounded-circle mr-2 border-rounded-circle"
-        src={BookImage}
-        alt="Book"
-        width="60px"
-      />
-      <input
-        name="bookname"
-        placeholder="Book Name"
-        style={{ marginBottom: "10px", marginTop: "20px" }}
-        spellCheck={false}
-      />
-      <br />
-      <img
-        className="rounded-circle mr-2 border-rounded-circle"
-        src={AuthorImage}
-        alt="Author"
-        width="60px"
-      />
-      <input
-        name="authorname"
-        placeholder="Author Name"
-        style={{ marginBottom: "10px" }}
-        spellCheck={false}
-      />
-      <br />
-      <button id="removebtn" className="myBtn adminbutton">
-        Remove Book
-      </button>
+      <div className="row justify-content-center text-center">
+        <img
+          className="rounded-circle mr-2 border-rounded-circle"
+          src={BookImage}
+          alt="Book"
+          width="60px"
+        />
+      </div>
+      <div className="row justify-content-center text-center">
+        <input
+          name="bookname"
+          placeholder="Book Name"
+          style={{ marginBottom: "10px", marginTop: "20px" }}
+          spellCheck={false}
+          style={{ width: "90%", overflow: "hidden" }}
+        />
+      </div>
+      <div className="row justify-content-center text-center">
+        <img
+          className="rounded-circle mr-2 border-rounded-circle"
+          src={AuthorImage}
+          alt="Author"
+          width="60px"
+        />
+      </div>
+      <div className="row justify-content-center text-center">
+        <input
+          name="authorname"
+          placeholder="Author Name"
+          style={{ marginBottom: "10px" }}
+          spellCheck={false}
+          style={{ width: "90%", overflow: "hidden" }}
+        />
+      </div>
+      <div className="row justify-content-center text-center">
+        <button id="removebtn" className="myBtn adminbutton">
+          Remove Book
+        </button>
+      </div>
     </div>
   );
 }

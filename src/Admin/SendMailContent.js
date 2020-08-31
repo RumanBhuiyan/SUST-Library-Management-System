@@ -10,33 +10,44 @@ function SendMailContent() {
   }, []);
   return (
     <div className="newbookdiv  w-sm-100">
-      <img
-        className="rounded-circle mr-2 border-rounded-circle"
-        src={UserIcon}
-        alt="User"
-        width="60px"
-      />
-      <input
-        name="userInfo"
-        placeholder="gmail or reg.no."
-        style={{ marginBottom: "10px", marginTop: "20px" }}
-        spellCheck={false}
-      />
-      <br />
-      <img
-        className="rounded-circle mr-2 border-rounded-circle"
-        src={MessageIcon}
-        alt="message"
-        width="80px"
-      />
-      {/* <input
-        name="message"
-        placeholder="Your Message"
-        style={{ marginBottom: "10px" }}
-        spellCheck={false}
-      /> */}
-      <textarea class="form-control" rows="2" cols="3"></textarea>
-      <br />
+      <div className="row justify-content-center text-center">
+        <img
+          className="rounded-circle mr-2 border-rounded-circle"
+          src={UserIcon}
+          alt="User"
+          width="60px"
+        />
+      </div>
+      <div className="row justify-content-center text-center">
+        <input
+          name="userInfo"
+          placeholder="gmail or reg.no."
+          style={{
+            marginBottom: "10px",
+            marginTop: "20px",
+            width: "90%",
+            overflow: "hidden",
+          }}
+          spellCheck={false}
+        />
+      </div>
+      <div className="row justify-content-center text-center">
+        <img
+          className="rounded-circle mr-2 border-rounded-circle"
+          src={MessageIcon}
+          alt="message"
+          width="80px"
+        />
+      </div>
+      <div className="row justify-content-center text-center">
+        <textarea
+          class="form-control mytextarea"
+          rows="2"
+          cols="3"
+          spellCheck={false}
+          placeholder="Your Message"
+        ></textarea>
+      </div>
       <div className="row justify-content-center text-center">
         <button id="sendbtn" className="myBtn adminbutton">
           Send Message

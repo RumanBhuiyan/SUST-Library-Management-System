@@ -142,21 +142,31 @@ input {
   box-shadow: none;
   transition: 0.5s;
 }
-#removebtn {
-  height: 40px;
-  width: 200px;
+#addbtn {
+  height: auto;
+  width: auto;
   margin-top: 20px;
-  margin-left: 3.5rem;
-  /* margin-left: -5px; */
-  /* margin-left: 60px !important; */
+  margin-right: 2rem;
+}
+#removebtn {
+  height: auto;
+  width: auto;
+  margin-top: 20px;
+  margin-right: 2rem;
 }
 #updatebtn {
-  width: 250px;
+  width: auto;
+  height: auto;
   margin-top: 20px;
-  margin-left: 2rem;
+  margin-right: 2rem;
 }
 #sendbtn {
-  width: 200px;
-  margin-left: 5rem;
-  margin-top: 10px;
+  width: 12rem;
+  margin-top: 20px;
+  margin-right: 2rem;
+  height: auto;
+}
+.mytextarea {
+  width: 75%;
+  resize: none;
 }
