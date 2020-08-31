@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./SignUpDesign.css";
 import UserIcon from "../images/username.png";
 import RegIcon from "../images/registration.PNG";
@@ -6,9 +6,14 @@ import GmailIcon from "../images/email.PNG";
 import PassIcon from "../images/password.PNG";
 import GoogleIcon from "../images/google.PNG";
 import FacebookIcon from "../images/facebook.png";
+import gsap from "gsap";
 //import Ripples from "react-ripples"; //for ripple effects in buttons
 
 function SignUpForm() {
+  useEffect(() => {
+    gsap.from("form", { marginTop: -200, opacity: 0, duration: 2 });
+  }, []);
+
   return (
     <div id="gradientdiv" className="col-lg-6 col-md-6 col-sm-12">
       <div className="row justify-content-center text-center signUpDiv">

@@ -8,6 +8,7 @@
   background-image: url("../images/cover3.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 .adminFullDiv {
   overflow: hidden;
@@ -31,6 +32,7 @@
   background-color: #474b5c;
   border-radius: 25px;
   box-shadow: -14px 10px 7px 0px black;
+  overflow: hidden;
 }
 .adminForm:hover {
   box-shadow: none;
@@ -38,7 +40,6 @@
 }
 input {
   margin-top: 10px;
-  /* margin-bottom: 10px; */
   text-align: center;
   border-radius: 1.33rem;
   outline: none;
@@ -51,11 +52,10 @@ input {
 }
 .myBtn {
   background: linear-gradient(to right, #fc466b, #3f5efb);
-  margin-left: 2.5rem;
   border: none !important;
   outline: none !important;
-  width: 8.75rem;
-  height: 2.12rem;
+  width: auto;
+  height: auto;
   border-radius: 2.5rem;
   font-size: 22px;
   letter-spacing: 2px;
@@ -64,6 +64,14 @@ input {
 .myBtn:hover {
   transform: scaleX(1.2);
   background: linear-gradient(to right, #11998e, #38ef7d);
+}
+#submitbtn {
+  height: auto;
+  width: auto;
+  margin-left: 1.2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: -14px 10px 7px 0px black;
 }
 .socialButtons {
   border: none !important;
@@ -113,7 +121,6 @@ input {
   font-family: Lobster Two;
   font-style: italic;
   font-size: 35px;
-  /* color: #efbb35; */
   color: #1ba94c;
   text-align: center;
   margin-top: 250px;

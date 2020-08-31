@@ -4,12 +4,13 @@
   background-repeat: no-repeat;
   font-family: Lobster Two;
   color: aliceblue;
+  overflow-x: hidden;
 }
 #loginVectorDiv {
-  margin-left: -60px;
-  margin-right: -42px;
-  margin-top: -48px;
-  margin-bottom: -50px;
+  padding-top: 3.5rem;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
 }
 #loginHeading {
   margin-top: 20px;
@@ -24,17 +25,19 @@
   transition: 0.5s;
 }
 .loginForm {
-  margin-top: 20px;
+  margin-top: 10px;
   background-color: #474b5c;
   border-radius: 25px;
   box-shadow: -14px 10px 7px 0px black;
+  overflow: hidden;
+  width: 65%;
+  padding: 5px;
 }
 .loginForm:hover {
   box-shadow: none;
   transition: 0.5s;
 }
 input {
-  margin-top: 10px;
   text-align: center;
   border-radius: 1.33rem;
   outline: none;
@@ -44,21 +47,21 @@ input {
   font-size: 1.25rem;
   font-weight: bold;
   color: #2a2a72;
+  overflow: hidden;
 }
-.formIcon {
-  margin-right: 0.94rem;
-}
+
 .myBtn {
   background: linear-gradient(to right, #fc466b, #3f5efb);
-  margin-left: 2.5rem;
   border: none !important;
   outline: none !important;
-  width: 8.75rem;
-  height: 2.12rem;
+  width: auto;
+  height: auto;
   border-radius: 2.5rem;
   font-size: 22px;
   letter-spacing: 2px;
   color: aliceblue;
+  overflow: hidden;
+  margin-top: 1rem;
 }
 .myBtn:hover {
   transform: scaleX(1.2);
