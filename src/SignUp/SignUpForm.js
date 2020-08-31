@@ -25,65 +25,79 @@ function SignUpForm() {
           method="post"
           className="signUpForm p-lg-5 p-md-4 p-sm-4 w-lg-85 w-md-75 w-sm-90"
         >
-          <img
-            className="formIcon rounded-circle"
-            src={UserIcon}
-            width={"40px"}
-            alt="User"
-          />
-          <input
-            className="w-auto mt-4 mr-4"
-            name="username"
-            type="name"
-            placeholder="Your Name"
-            spellCheck={"false"}
-          />
-          <br />
-          <img
-            className="formIcon rounded-circle"
-            src={RegIcon}
-            width={"40px"}
-            alt="Reg no."
-          />
-          <input
-            className="w-auto mr-4"
-            name="regno"
-            type="number"
-            placeholder="Registration No."
-            spellCheck={"false"}
-          />
-          <br />
-          <img
-            className="formIcon rounded-circle"
-            src={GmailIcon}
-            width={"40px"}
-            alt="Gmail"
-          />
-          <input
-            className="w-auto mr-4"
-            name="email"
-            type="email"
-            placeholder="Enter Gmail"
-            spellCheck={"false"}
-          />
-          <br />
-          <img
-            className="formIcon rounded-circle"
-            src={PassIcon}
-            width={"40px"}
-            alt="Password"
-          />
-          <input
-            className="w-auto mr-4"
-            name="password"
-            type="password"
-            placeholder="Your Password"
-            spellCheck={"false"}
-          />
-          <br /> <br />
-          <button type="submit" className="myBtn">
-            Submit
-          </button>
+          <div className="row justify-content-center text-center">
+            <img
+              className="formIcon rounded-circle"
+              src={UserIcon}
+              width={"40px"}
+              alt="User"
+            />
+          </div>
+          <div className="row justify-content-center text-center">
+            <input
+              name="username"
+              type="name"
+              placeholder="Your Name"
+              spellCheck={"false"}
+              style={{ width: "90%", overflow: "hidden" }}
+            />
+          </div>
+          <div className="row justify-content-center text-center">
+            <img
+              className="formIcon rounded-circle"
+              src={RegIcon}
+              width={"40px"}
+              alt="Reg no."
+            />
+          </div>
+          <div className="row justify-content-center text-center">
+            <input
+              name="regno"
+              type="number"
+              placeholder="Registration No."
+              spellCheck={"false"}
+              style={{ width: "90%", overflow: "hidden" }}
+            />
+          </div>
+          <div className="row justify-content-center text-center">
+            <img
+              className="formIcon rounded-circle"
+              src={GmailIcon}
+              width={"40px"}
+              alt="Gmail"
+            />
+          </div>
+          <div className="row justify-content-center text-center">
+            <input
+              name="email"
+              type="email"
+              placeholder="Enter Gmail"
+              spellCheck={"false"}
+              style={{ width: "90%", overflow: "hidden" }}
+            />
+          </div>
+          <div className="row justify-content-center text-center">
+            <img
+              className="formIcon rounded-circle"
+              src={PassIcon}
+              width={"40px"}
+              alt="Password"
+            />
+          </div>
+          <div className="row justify-content-center text-center">
+            <input
+              name="password"
+              type="password"
+              placeholder="Your Password"
+              spellCheck={"false"}
+              style={{ width: "90%", overflow: "hidden" }}
+            />
+          </div>
+          <div className="row justify-content-center text-center">
+            <button type="submit" className="myBtn">
+              Submit
+            </button>
+          </div>
         </form>
       </div>
       <div className="row justify-content-center text-center">

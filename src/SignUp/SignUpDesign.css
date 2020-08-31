@@ -35,7 +35,6 @@
   transition: 0.5s;
 }
 input {
-  margin-top: 10px;
   text-align: center;
   border-radius: 1.33rem;
   outline: none;
@@ -47,19 +46,20 @@ input {
   color: #2a2a72;
 }
 .formIcon {
-  margin-right: 0.94rem;
+  margin-top: 0.5rem;
 }
 .myBtn {
   background: linear-gradient(to right, #fc466b, #3f5efb);
-  margin-left: 2.5rem;
+
   border: none !important;
   outline: none !important;
-  width: 8.75rem;
-  height: 2.12rem;
+  width: auto;
+  height: auto;
   border-radius: 2.5rem;
   font-size: 22px;
   letter-spacing: 2px;
   color: aliceblue;
+  margin-bottom: 1rem;
 }
 .myBtn:hover {
   transform: scaleX(1.2);

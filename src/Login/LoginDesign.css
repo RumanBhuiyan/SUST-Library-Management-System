@@ -62,10 +62,13 @@ input {
   color: aliceblue;
   overflow: hidden;
   margin-top: 1rem;
+  box-shadow: -14px 10px 7px 0px black;
 }
 .myBtn:hover {
   transform: scaleX(1.2);
   background: linear-gradient(to right, #11998e, #38ef7d);
+  box-shadow: none;
+  transition: 0.5s;
 }
 .loginButton {
   border: none !important;

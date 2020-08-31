@@ -9,7 +9,7 @@ function AdminVector() {
         <img
           src={AdminPageVector}
           width={"100%"}
-          height={"630px"}
+          height={"650px"}
           alt="vector"
         />
       </div>

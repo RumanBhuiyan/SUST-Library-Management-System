@@ -9,7 +9,7 @@ function SignUpVector() {
         <img
           src={SignUpPageVector}
           width={"100%"}
-          height={"550px"}
+          height={"750px"}
           alt="vector"
         />
       </div>
@@ -18,3 +18,4 @@ function SignUpVector() {
 }
 
 export default SignUpVector;
+//for changing image height not changing div height use image direct height prop
