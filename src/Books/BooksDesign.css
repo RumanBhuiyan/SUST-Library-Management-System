@@ -1,0 +1,42 @@
+.bookdiv {
+  background-color: #343a40;
+  font-family: Lobster Two;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  color: aliceblue;
+}
+.card {
+  width: 18rem;
+  border-radius: 12px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border: 2px solid black;
+  box-shadow: -14px 10px 7px 0px black;
+}
+.card:hover {
+  box-shadow: none;
+  transition: 0.5s;
+}
+.card-body {
+  background: linear-gradient(to right, #41295a, #2f0743);
+}
+.cardbtn {
+  margin-top: 10px;
+  height: 2.4rem;
+  border: none !important;
+  outline: none !important;
+  color: aliceblue;
+  background: linear-gradient(to right, #11998e, #38ef7d);
+  border-radius: 12px;
+  box-shadow: -14px 10px 7px 0px black;
+}
+.cardbtn:hover {
+  transform: scaleX(1.5);
+  box-shadow: none;
+  transition: 0.5s;
+}
+.datepicker {
+  margin-left: -15px;
+}
