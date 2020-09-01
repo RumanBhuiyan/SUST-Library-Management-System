@@ -4,9 +4,13 @@
   font-size: 1.2rem;
   letter-spacing: 2px;
   color: aliceblue;
+  overflow: hidden;
+  justify-content: center;
+  max-width: 100%;
+  width: 100%;
 }
 .card {
-  width: 18rem;
+  width: auto;
   border-radius: 12px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -14,6 +18,7 @@
   margin-top: 10px;
   border: 2px solid black;
   box-shadow: -14px 10px 7px 0px black;
+  overflow: hidden;
 }
 .card:hover {
   box-shadow: none;

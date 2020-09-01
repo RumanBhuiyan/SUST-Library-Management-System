@@ -4,23 +4,22 @@ import gsap from "gsap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function Card() {
+function Card(props) {
+  //console.log(props);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-
-  useEffect(() => {
-    gsap.from(".card", { marginLeft: -200, opacity: 0, duration: 1 });
-  }, []);
+  const [availability, setAvailability] = useState(props.value.available);
+  //const [availability, setAvailability] = useState(true);
 
   //called every time when startDate changes
-  useEffect(() => {
-    console.log(startDate);
-  }, [startDate]);
+  // useEffect(() => {
+  //   console.log(startDate);
+  // }, [startDate]);
 
   //called every time when endDate changes
-  useEffect(() => {
-    console.log(endDate);
-  }, [endDate]);
+  // useEffect(() => {
+  //   console.log(endDate);
+  // }, [endDate]);
 
   const handleChange = (date, keep) => {
     if (keep === "start") {
@@ -44,35 +43,42 @@ function Card() {
   };
 
   return (
-    <div className="card">
-      <img
-        className="card-img-top"
-        src="https://s.pdfdrive.com/assets/thumbs/699/699e3fbc54d142c5e7c7b087d8d086b7.jpg"
-        alt="Card"
-        height="300px"
-        style={{ borderRadius: "12px" }}
-      />
-      <div className="card-body">
-        <h5 className="card-title">Automate the Boring Stuff With Python</h5>
-        <p className="card-text">Status : available</p>
-        <p className="card-text">Borrowed By : 2016331076</p>
-        <div className="datepicker">
-          <DatePicker
-            selected={startDate}
-            onSelect={(date) => {
-              handleChange(date, "start");
-            }}
-          />
+    <div className="col-lg-4 col-md-6 col-sm-12">
+      <div className="card">
+        <img
+          className="card-img-top"
+          src={props.value.imageurl}
+          alt="Card"
+          height="300px"
+          style={{ borderRadius: "12px" }}
+        />
+        <div className="card-body">
+          <h5 className="card-title">{props.value.name}</h5>
+          {availability ? (
+            <div>
+              <p className="card-text">Status : Available</p>
+              <div className="datepicker">
+                <DatePicker
+                  selected={startDate}
+                  onSelect={(date) => {
+                    handleChange(date, "start");
+                  }}
+                />
+              </div>
+              <div className="datepicker">
+                <DatePicker
+                  selected={endDate}
+                  onSelect={(date) => {
+                    handleChange(date, "end");
+                  }}
+                />
+              </div>
+              <button className="cardbtn">Borrow Book</button>
+            </div>
+          ) : (
+            <p className="card-text">Borrowed By : 2016331076</p>
+          )}
         </div>
-        <div className="datepicker">
-          <DatePicker
-            selected={endDate}
-            onSelect={(date) => {
-              handleChange(date, "end");
-            }}
-          />
-        </div>
-        <button className="cardbtn">Borrow Book</button>
       </div>
     </div>
   );

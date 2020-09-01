@@ -9,18 +9,14 @@ function BooksPage() {
   }, []);
 
   return (
-    <div className="container-fluid bookdiv">
+    <div className="container bookdiv ">
       <div className="row justify-content-center text-center">
-        <Card />
+        {Books.map((item) => {
+          return <Card key={item.id} value={item} />;
+        })}
       </div>
     </div>
   );
 }
 
 export default BooksPage;
-
-// {
-//   Books.map((item) => {
-//     return <li key={item.id}>{item.name}</li>;
-//   });
-// }
