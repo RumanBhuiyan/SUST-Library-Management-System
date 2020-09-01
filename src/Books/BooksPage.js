@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./BooksDesign.css";
 import Books from "./Books";
 import Card from "./Card";
@@ -8,6 +8,13 @@ function BooksPage() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
+
+  const [filterText, setFilterText] = useState("");
+  const filteredItems = Books.filter((item) =>
+    item.name.toLocaleLowerCase().includes(filterText)
+  );
+
+  const itemsToDisplay = filterText ? filteredItems : Books;
 
   return (
     <div className="container bookdiv ">
@@ -21,11 +28,13 @@ function BooksPage() {
           className="searchInput"
           placeholder="Search Book"
           name="search"
+          value={filterText}
           spellCheck="false"
+          onChange={(e) => setFilterText(e.target.value.toLocaleLowerCase())}
         />
       </div>
       <div className="row justify-content-center text-center">
-        {Books.map((item) => {
+        {itemsToDisplay.map((item) => {
           return <Card key={item.id} value={item} />;
         })}
       </div>
