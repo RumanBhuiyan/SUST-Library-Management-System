@@ -45,3 +45,16 @@
 .datepicker {
   margin-left: -15px;
 }
+.searchdiv {
+  justify-content: center;
+  text-align: center;
+}
+.searchInput {
+  background-color: #fd746c;
+  color: #3e2456;
+  width: 12%;
+}
+.searchInput:focus {
+  width: 50%;
+  transition: 2s;
+}
