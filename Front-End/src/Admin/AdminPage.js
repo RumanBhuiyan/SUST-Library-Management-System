@@ -5,7 +5,7 @@ import AdminDashboard from "./AdminDashboard";
 
 function AdminPage() {
   const [isLoggedIn, setLoggedIn] = useState(false);
-  // const [isLoggedIn, setLoggedIn] = useState(true);
+  //const [isLoggedIn, setLoggedIn] = useState(true);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });

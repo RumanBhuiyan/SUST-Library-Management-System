@@ -50,6 +50,7 @@ input {
   font-weight: bold;
   color: #2a2a72;
 }
+
 .myBtn {
   background: linear-gradient(to right, #fc466b, #3f5efb);
   border: none !important;

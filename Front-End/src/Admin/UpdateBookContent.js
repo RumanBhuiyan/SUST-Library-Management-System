@@ -4,6 +4,7 @@ import BookImage from "../images/book.png";
 import PrevUser from "../images/prevuser.png";
 import CurrentUser from "../images/currentuser.png";
 import gsap from "gsap";
+import jump from "../InputFieldJump";
 
 function UpdateBookContent() {
   useEffect(() => {
@@ -25,6 +26,7 @@ function UpdateBookContent() {
           placeholder="Book Name"
           spellCheck={false}
           style={{ width: "90%", overflow: "hidden" }}
+          onClick={(e) => jump(e)}
         />
       </div>
       <div className="row justify-content-center text-center">
@@ -41,6 +43,7 @@ function UpdateBookContent() {
           placeholder="gmail or reg.no."
           spellCheck={false}
           style={{ width: "90%", overflow: "hidden" }}
+          onClick={(e) => jump(e)}
         />
       </div>
       <div className="row justify-content-center text-center">
@@ -57,10 +60,11 @@ function UpdateBookContent() {
           placeholder="gmail or reg.no."
           spellCheck={false}
           style={{ width: "90%", overflow: "hidden" }}
+          onClick={(e) => jump(e)}
         />
       </div>
       <div className="row justify-content-center text-center ml-lg-2 ml-md-2 ml-sm-0">
-        <button id="updatebtn" className="myBtn adminbutton">
+        <button id="updatebtn" className="myBtn adminbutton" data-micron="pop">
           Change Ownership
         </button>
       </div>

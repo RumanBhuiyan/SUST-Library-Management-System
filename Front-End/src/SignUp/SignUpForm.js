@@ -7,6 +7,7 @@ import PassIcon from "../images/password.PNG";
 import GoogleIcon from "../images/google.PNG";
 import FacebookIcon from "../images/facebook.png";
 import gsap from "gsap";
+import jump from "../InputFieldJump";
 //import Ripples from "react-ripples"; //for ripple effects in buttons
 
 function SignUpForm() {
@@ -40,6 +41,7 @@ function SignUpForm() {
               placeholder="Your Name"
               spellCheck={"false"}
               style={{ width: "90%", overflow: "hidden" }}
+              onClick={(e) => jump(e)}
             />
           </div>
           <div className="row justify-content-center text-center">
@@ -57,6 +59,7 @@ function SignUpForm() {
               placeholder="Registration No."
               spellCheck={"false"}
               style={{ width: "90%", overflow: "hidden" }}
+              onClick={(e) => jump(e)}
             />
           </div>
           <div className="row justify-content-center text-center">
@@ -74,6 +77,7 @@ function SignUpForm() {
               placeholder="Enter Gmail"
               spellCheck={"false"}
               style={{ width: "90%", overflow: "hidden" }}
+              onClick={(e) => jump(e)}
             />
           </div>
           <div className="row justify-content-center text-center">
@@ -91,10 +95,11 @@ function SignUpForm() {
               placeholder="Your Password"
               spellCheck={"false"}
               style={{ width: "90%", overflow: "hidden" }}
+              onClick={(e) => jump(e)}
             />
           </div>
           <div className="row justify-content-center text-center">
-            <button type="submit" className="myBtn">
+            <button type="submit" className="myBtn" data-micron="bounce">
               Submit
             </button>
           </div>
@@ -102,7 +107,7 @@ function SignUpForm() {
       </div>
       <div className="row justify-content-center text-center">
         <div className="col">
-          <button className="signInButton">
+          <button className="signInButton" data-micron="pop">
             <img
               className="rounded-circle"
               src={GoogleIcon}
@@ -113,7 +118,7 @@ function SignUpForm() {
           </button>
         </div>
         <div className="col">
-          <button className="signInButton mb-3">
+          <button className="signInButton mb-3" data-micron="pop">
             <img
               className="rounded-circle"
               src={FacebookIcon}

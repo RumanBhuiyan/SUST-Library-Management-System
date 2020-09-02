@@ -48,6 +48,7 @@ function AdminDashboard() {
           <div
             className="row d-lg-block taskdiv "
             onClick={() => setContent(1)}
+            data-micron="flicker"
           >
             <img src={NewIcon} alt="NewBook" width={"45px"} />
             New Book
@@ -55,6 +56,7 @@ function AdminDashboard() {
           <div
             className="row d-lg-block taskdiv "
             onClick={() => setContent(2)}
+            data-micron="flicker"
           >
             <img src={RemoveIcon} alt="RemoveBook" width={"45px"} />
             Remove Book
@@ -64,6 +66,7 @@ function AdminDashboard() {
             onClick={() => {
               setContent(3);
             }}
+            data-micron="flicker"
           >
             <img src={UpdateIcon} alt="UpdateBook" width={"45px"} />
             Update Book
@@ -71,6 +74,7 @@ function AdminDashboard() {
           <div
             className="row d-lg-block taskdiv "
             onClick={() => setContent(4)}
+            data-micron="flicker"
           >
             <img src={MailIcon} alt="SendMail" width={"45px"} />
             Send Mail
@@ -78,6 +82,7 @@ function AdminDashboard() {
           <div
             className="row d-lg-block taskdiv "
             onClick={() => setContent(5)}
+            data-micron="flicker"
           >
             <img src={LogoutIcon} alt="LogOut" width={"45px"} />
             LogOut

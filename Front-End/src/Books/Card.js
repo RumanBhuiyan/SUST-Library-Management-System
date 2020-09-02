@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./BooksDesign.css";
-import gsap from "gsap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import $ from "jquery";
 
 function Card(props) {
   //console.log(props);
@@ -20,6 +20,13 @@ function Card(props) {
   // useEffect(() => {
   //   console.log(endDate);
   // }, [endDate]);
+
+  useEffect(() => {
+    $(".card").hover(() => {
+      // $(this).attr("data-micron", "bounce");
+      //alert("Above me");
+    });
+  }, []);
 
   const handleChange = (date, keep) => {
     if (keep === "start") {
@@ -44,7 +51,7 @@ function Card(props) {
 
   return (
     <div className="col-lg-4 col-md-6 col-sm-12">
-      <div className="card">
+      <div className="card" data-micron="bounce">
         <img
           className="card-img-top"
           src={props.value.imageurl}
@@ -73,7 +80,9 @@ function Card(props) {
                   }}
                 />
               </div>
-              <button className="cardbtn">Borrow Book</button>
+              <button className="cardbtn" data-micron="bounce">
+                Borrow Book
+              </button>
             </div>
           ) : (
             <p className="card-text">Borrowed By : 2016331076</p>

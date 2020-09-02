@@ -58,3 +58,11 @@
   width: 50%;
   transition: 2s;
 }
+.username {
+  background-color: #ff296a;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  border-radius: 100%;
+  padding: 15px;
+}

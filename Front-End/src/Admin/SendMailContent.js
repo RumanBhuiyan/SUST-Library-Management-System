@@ -3,6 +3,7 @@ import "./AdminDesign.css";
 import gsap from "gsap";
 import UserIcon from "../images/username.png";
 import MessageIcon from "../images/chat.PNG";
+import jump from "../InputFieldJump";
 
 function SendMailContent() {
   useEffect(() => {
@@ -29,6 +30,7 @@ function SendMailContent() {
             overflow: "hidden",
           }}
           spellCheck={false}
+          onClick={(e) => jump(e)}
         />
       </div>
       <div className="row justify-content-center text-center">
@@ -46,10 +48,11 @@ function SendMailContent() {
           cols="3"
           spellCheck={false}
           placeholder="Your Message"
+          onClick={(e) => jump(e)}
         ></textarea>
       </div>
       <div className="row justify-content-center text-center">
-        <button id="sendbtn" className="myBtn adminbutton">
+        <button id="sendbtn" className="myBtn adminbutton" data-micron="pop">
           Send Message
         </button>
       </div>

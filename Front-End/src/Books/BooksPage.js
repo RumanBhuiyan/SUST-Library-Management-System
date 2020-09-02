@@ -9,6 +9,9 @@ function BooksPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
+  const [loggedIn, setLoggedIn] = useState(true);
+  //const [loggedIn, setLoggedIn] = useState(false);
+
   const [filterText, setFilterText] = useState("");
   const filteredItems = Books.filter((item) =>
     item.name.toLocaleLowerCase().includes(filterText)
@@ -32,6 +35,7 @@ function BooksPage() {
           spellCheck="false"
           onChange={(e) => setFilterText(e.target.value.toLocaleLowerCase())}
         />
+        {loggedIn ? <p className="username">Ruman</p> : <p></p>}
       </div>
       <div className="row justify-content-center text-center">
         {itemsToDisplay.map((item) => {
