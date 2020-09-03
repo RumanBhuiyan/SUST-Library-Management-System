@@ -3,6 +3,7 @@ const router = express.Router();
 require("dotenv").config();
 
 const mongoose = require("mongoose");
+const Books = require("./Models");
 
 router.get("/", (req, res) => {
   mongoose
@@ -16,13 +17,12 @@ router.get("/", (req, res) => {
       }
     )
     .then(() => {
-      //console.log(data);
       console.log("Connected with database successfully");
     })
     .catch((error) => {
       console.log(error);
     });
-  //console.log(response);
+
   res.send(`<h1>Welcome to library</h1>`);
 });
 
