@@ -80,7 +80,7 @@ function Card(props) {
               </button>
             </div>
           ) : (
-            <p className="card-text">Borrowed By : 2016331076</p>
+            <p className="card-text">Borrowed By : {props.value.borrowedBy}</p>
           )}
         </div>
       </div>

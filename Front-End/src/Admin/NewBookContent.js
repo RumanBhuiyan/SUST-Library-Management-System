@@ -29,7 +29,7 @@ function NewBookContent() {
           onClick={(e) => jump(e)}
         />
       </div>
-      <div className="row justify-content-center text-center">
+      {/* <div className="row justify-content-center text-center">
         <img
           className="rounded-circle mr-2 border-rounded-circle"
           src={AuthorImage}
@@ -45,7 +45,7 @@ function NewBookContent() {
           style={{ width: "90%", overflow: "hidden" }}
           onClick={(e) => jump(e)}
         />
-      </div>
+      </div> */}
       <div className="row justify-content-center text-center">
         <img
           className="rounded-circle mr-2 border-rounded-circle"
