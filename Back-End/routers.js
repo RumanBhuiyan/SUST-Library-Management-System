@@ -41,7 +41,6 @@ router.get("/data", (req, res) => {
     .catch((error) => {
       console.log(error);
     });
-  // res.send(`<h1>Welcome to library</h1>`);
 });
 
 module.exports = router;

@@ -7,6 +7,7 @@ const BookList = new Schema({
   startdate: String,
   enddate: String,
   bookimageurl: String,
+  borrowedBy: String,
 });
 
 module.exports = BookList;
