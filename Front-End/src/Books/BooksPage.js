@@ -14,7 +14,7 @@ function BooksPage() {
 
   const [filterText, setFilterText] = useState("");
   const filteredItems = Books.filter((item) =>
-    item.name.toLocaleLowerCase().includes(filterText)
+    item.bookname.toLocaleLowerCase().includes(filterText)
   );
 
   const itemsToDisplay = filterText ? filteredItems : Books;
@@ -39,7 +39,7 @@ function BooksPage() {
       </div>
       <div className="row justify-content-center text-center">
         {itemsToDisplay.map((item) => {
-          return <Card key={item.id} value={item} />;
+          return <Card key={item._id} value={item} />;
         })}
       </div>
     </div>

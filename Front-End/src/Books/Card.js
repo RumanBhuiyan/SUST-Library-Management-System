@@ -2,13 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./BooksDesign.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import $ from "jquery";
 
 function Card(props) {
-  //console.log(props);
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
-  const [availability, setAvailability] = useState(props.value.available);
+  const [startDate, setStartDate] = useState(props.value.startdate);
+  const [endDate, setEndDate] = useState(props.value.enddate);
+  const [availability, setAvailability] = useState(props.value.bookstatus);
   //const [availability, setAvailability] = useState(true);
 
   //called every time when startDate changes
@@ -22,10 +20,7 @@ function Card(props) {
   // }, [endDate]);
 
   useEffect(() => {
-    $(".card").hover(() => {
-      // $(this).attr("data-micron", "bounce");
-      //alert("Above me");
-    });
+    //code executes after rendering this components into index.html page
   }, []);
 
   const handleChange = (date, keep) => {
@@ -51,19 +46,19 @@ function Card(props) {
 
   return (
     <div className="col-lg-4 col-md-6 col-sm-12">
-      <div className="card" data-micron="bounce">
+      <div className="card">
         <img
           className="card-img-top"
-          src={props.value.imageurl}
+          src={props.value.bookimageurl}
           alt="Card"
           height="300px"
           style={{ borderRadius: "12px" }}
         />
         <div className="card-body">
-          <h5 className="card-title">{props.value.name}</h5>
-          {availability ? (
+          <h5 className="card-title">{props.value.bookname}</h5>
+          {availability === "Available" ? (
             <div>
-              <p className="card-text">Status : Available</p>
+              <p className="card-text">Status : {availability}</p>
               <div className="datepicker">
                 <DatePicker
                   selected={startDate}
