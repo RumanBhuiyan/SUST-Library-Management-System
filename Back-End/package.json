@@ -15,6 +15,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "http-proxy-middleware": "^1.0.5",
-    "mongoose": "^5.10.2"
+    "mongoose": "^5.10.2",
+    "nodemailer": "^6.4.11"
   }
 }

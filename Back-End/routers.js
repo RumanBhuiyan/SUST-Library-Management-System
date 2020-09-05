@@ -4,6 +4,7 @@ require("dotenv").config();
 
 const mongoose = require("mongoose");
 const Books = require("./Models");
+const nodemailer = require("nodemailer");
 
 mongoose
   .connect(
@@ -99,6 +100,30 @@ router.put("/data", (req, res) => {
       }
     }
   });
+});
+
+router.post("/data/mail", (req, res) => {
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.MY_GMAIL,
+      pass: process.env.MY_GMAIL_PASSWORD,
+    },
+  });
+  const mailOptions = {
+    from: process.env.MY_GMAIL,
+    to: req.query.gmail,
+    subject: "Purchasing Book",
+    text: req.query.message,
+  };
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+  res.send("Email Sent Successfully");
 });
 
 module.exports = router;

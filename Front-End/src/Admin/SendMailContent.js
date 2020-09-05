@@ -1,14 +1,46 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./AdminDesign.css";
 import gsap from "gsap";
 import UserIcon from "../images/username.png";
 import MessageIcon from "../images/chat.PNG";
 import jump from "../InputFieldJump";
+import { useHistory } from "react-router-dom";
 
-function SendMailContent() {
+function SendMailContent(props) {
+  const history = useHistory();
+
+  const [mailContent, setMailContent] = useState({
+    gmail: "",
+    message: "",
+  });
+
   useEffect(() => {
     gsap.from(".newbookdiv", { marginTop: -200, opacity: 0, duration: 1 });
   }, []);
+
+  const handleChange = (event) => {
+    if (event.target.name === "userInfo") {
+      setMailContent({
+        ...mailContent,
+        gmail: event.target.value,
+      });
+    } else {
+      setMailContent({
+        ...mailContent,
+        message: event.target.value,
+      });
+    }
+  };
+
+  const handleClick = () => {
+    setMailContent({
+      gmail: "",
+      message: "",
+    });
+
+    gsap.to(".newbookdiv", { opacity: 0, duration: 2 });
+  };
+
   return (
     <div className="newbookdiv  w-sm-100">
       <div className="row justify-content-center text-center">
@@ -22,7 +54,7 @@ function SendMailContent() {
       <div className="row justify-content-center text-center">
         <input
           name="userInfo"
-          placeholder="gmail or reg.no."
+          placeholder="Enter gmail"
           style={{
             marginBottom: "10px",
             marginTop: "20px",
@@ -31,6 +63,9 @@ function SendMailContent() {
           }}
           spellCheck={false}
           onClick={(e) => jump(e)}
+          onChange={(e) => {
+            handleChange(e);
+          }}
         />
       </div>
       <div className="row justify-content-center text-center">
@@ -43,16 +78,24 @@ function SendMailContent() {
       </div>
       <div className="row justify-content-center text-center">
         <textarea
-          class="form-control mytextarea"
+          className="form-control mytextarea text-center"
           rows="2"
           cols="3"
           spellCheck={false}
           placeholder="Your Message"
           onClick={(e) => jump(e)}
+          onChange={(e) => {
+            handleChange(e);
+          }}
         ></textarea>
       </div>
       <div className="row justify-content-center text-center">
-        <button id="sendbtn" className="myBtn adminbutton" data-micron="pop">
+        <button
+          id="sendbtn"
+          className="myBtn adminbutton"
+          data-micron="pop"
+          onClick={() => handleClick()}
+        >
           Send Message
         </button>
       </div>
@@ -61,3 +104,9 @@ function SendMailContent() {
 }
 
 export default SendMailContent;
+
+//Configuring .env file in react app
+//i)create a .env file inside src directory
+// ii)key names will be like : process.env.REACT_APP_GMAIL
+//n.b REACT_APP_ will exixts prior to any key name,its must
+// otherwise won't work
