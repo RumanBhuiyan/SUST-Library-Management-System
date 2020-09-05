@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./BooksDesign.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
 
 function Card(props) {
   const [startDate, setStartDate] = useState(props.value.startdate);
@@ -18,10 +19,6 @@ function Card(props) {
   // useEffect(() => {
   //   console.log(endDate);
   // }, [endDate]);
-
-  useEffect(() => {
-    //code executes after rendering this components into index.html page
-  }, []);
 
   const handleChange = (date, keep) => {
     if (keep === "start") {
@@ -42,6 +39,26 @@ function Card(props) {
         setEndDate(date);
       }
     }
+  };
+
+  const handleClick = () => {
+    axios({
+      method: "put",
+      url: "http://localhost:4000/data/updatebook",
+      data: {
+        bookname: props.value.bookname,
+        borrowedBy: "2016331076",
+        startdate: startDate,
+        enddate: endDate,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    window.location.reload();
   };
 
   return (
@@ -75,7 +92,11 @@ function Card(props) {
                   }}
                 />
               </div>
-              <button className="cardbtn" data-micron="bounce">
+              <button
+                className="cardbtn"
+                data-micron="bounce"
+                onClick={() => handleClick()}
+              >
                 Borrow Book
               </button>
             </div>

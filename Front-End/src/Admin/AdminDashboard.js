@@ -26,7 +26,7 @@ function AdminDashboard() {
       renderedHtml = <UpdateBookContent />;
       break;
     case 4:
-      renderedHtml = <SendMailContent value={setContent} />;
+      renderedHtml = <SendMailContent />;
       break;
     case 5:
       renderedHtml = <LogoutContent />;

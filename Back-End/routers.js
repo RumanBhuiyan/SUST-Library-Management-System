@@ -24,16 +24,6 @@ mongoose
   });
 
 router.get("/data", (req, res) => {
-  //I am allowing client or front-end app to access this route
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Max-Age", "1800");
-  res.setHeader("Access-Control-Allow-Headers", "content-type");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "PUT, POST, GET, DELETE, PATCH, OPTIONS"
-  );
-
   Books.find({})
     .then((data) => {
       res.send(data);
@@ -44,7 +34,7 @@ router.get("/data", (req, res) => {
 });
 
 router.post("/data", (req, res) => {
-  const { bookname, bookimageurl } = req.query;
+  const { bookname, bookimageurl } = req.body;
 
   const book = new Books({
     bookname: bookname,
@@ -59,14 +49,14 @@ router.post("/data", (req, res) => {
 });
 
 router.delete("/data", (req, res) => {
-  Books.findOne({ bookname: req.query.bookname }, (error, data) => {
+  Books.findOne({ bookname: req.body.bookname }, (error, data) => {
     if (error) {
       console.log(error);
     } else {
       if (data === null) {
         res.send("Enter a valid Book name");
       } else {
-        Books.deleteOne({ bookname: req.query.bookname }, (error) => {
+        Books.deleteOne({ bookname: req.body.bookname }, (error) => {
           if (error) {
             res.send(error);
           } else {
@@ -79,7 +69,7 @@ router.delete("/data", (req, res) => {
 });
 
 router.put("/data", (req, res) => {
-  Books.findOne({ bookname: req.query.bookname }, (error, data) => {
+  Books.findOne({ bookname: req.body.bookname }, (error, data) => {
     if (error) {
       console.log(error);
     } else {
@@ -87,8 +77,8 @@ router.put("/data", (req, res) => {
         res.send("Enter a valid Book name");
       } else {
         Books.updateMany(
-          { bookname: req.query.bookname },
-          { borrowedBy: req.query.borrowedBy, bookstatus: "Not Available" },
+          { bookname: req.body.bookname },
+          { borrowedBy: req.body.borrowedBy, bookstatus: "Not Available" },
           (error) => {
             if (error) {
               console.log(error);
@@ -112,9 +102,9 @@ router.post("/data/mail", (req, res) => {
   });
   const mailOptions = {
     from: process.env.MY_GMAIL,
-    to: req.query.gmail,
+    to: req.body.gmail,
     subject: "Purchasing Book",
-    text: req.query.message,
+    text: req.body.message,
   };
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
@@ -124,6 +114,41 @@ router.post("/data/mail", (req, res) => {
     }
   });
   res.send("Email Sent Successfully");
+
+  //Gmail.com doesn't allow to send message like this for several
+  //vulnerabilities thats why to use this service you need to enable
+  // less secure gmail service of your gmail account from here
+  //https://myaccount.google.com/lesssecureapps?pli=1
+  // You can disable it anytime also
+});
+
+router.put("/data/updatebook", (req, res) => {
+  Books.findOne({ bookname: req.body.bookname }, (error, data) => {
+    if (error) {
+      console.log(error);
+    } else {
+      if (data === null) {
+        res.send("Enter a valid Book name");
+      } else {
+        Books.updateMany(
+          { bookname: req.body.bookname },
+          {
+            borrowedBy: req.body.borrowedBy,
+            startdate: req.body.startdate,
+            enddate: req.body.enddate,
+            bookstatus: "Not Available",
+          },
+          (error) => {
+            if (error) {
+              console.log(error);
+            } else {
+              res.send("Book Borrowed Successfully");
+            }
+          }
+        );
+      }
+    }
+  });
 });
 
 module.exports = router;

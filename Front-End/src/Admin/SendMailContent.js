@@ -4,11 +4,9 @@ import gsap from "gsap";
 import UserIcon from "../images/username.png";
 import MessageIcon from "../images/chat.PNG";
 import jump from "../InputFieldJump";
-import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 function SendMailContent(props) {
-  const history = useHistory();
-
   const [mailContent, setMailContent] = useState({
     gmail: "",
     message: "",
@@ -33,12 +31,21 @@ function SendMailContent(props) {
   };
 
   const handleClick = () => {
-    setMailContent({
-      gmail: "",
-      message: "",
-    });
-
-    gsap.to(".newbookdiv", { opacity: 0, duration: 2 });
+    axios({
+      method: "post",
+      url: "http://localhost:4000/data/mail",
+      data: {
+        ...mailContent,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    gsap.to(".newbookdiv", { opacity: 0, duration: 1 });
+    window.location.reload();
   };
 
   return (
