@@ -6,6 +6,13 @@ const mongoose = require("mongoose");
 const Books = require("./Models");
 const nodemailer = require("nodemailer");
 
+const adminSchema = new mongoose.Schema({
+  username: String,
+  password: String,
+});
+
+const admin = mongoose.model("admins", adminSchema);
+
 mongoose
   .connect(
     `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.ejbh7.mongodb.net/${process.env.DB_BOOKSDB}?retryWrites=true&w=majority`,
@@ -149,6 +156,23 @@ router.put("/data/updatebook", (req, res) => {
       }
     }
   });
+});
+
+router.post("/admin/login", (req, response) => {
+  admin
+    .find({ username: req.body.username })
+    .then((res) => {
+      if (res.length <= 0) {
+        response.send(false);
+      } else {
+        if (res[0].password === req.body.password) {
+          response.send(true);
+        } else {
+          response.send(false);
+        }
+      }
+    })
+    .catch((err) => console.log(err));
 });
 
 module.exports = router;

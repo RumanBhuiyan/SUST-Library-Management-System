@@ -4,7 +4,14 @@ import Loader from "./Loader/Loader";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
 
+export const MyContext = React.createContext();
+const Provider = MyContext.Provider;
+
 function App() {
+  const [infoStore, setInfoStore] = useState({
+    adminLoggedIn: false,
+  });
+
   const [spinner, setSpinner] = useState(true);
   useEffect(() => {
     setTimeout(() => {
@@ -14,14 +21,16 @@ function App() {
 
   return (
     <div>
-      {spinner ? (
-        <Loader />
-      ) : (
-        <div>
-          <Navbar />
-          <Footer />
-        </div>
-      )}
+      <Provider value={{ infoStore, setInfoStore }}>
+        {spinner ? (
+          <Loader />
+        ) : (
+          <div>
+            <Navbar />
+            <Footer />
+          </div>
+        )}
+      </Provider>
     </div>
   );
 }

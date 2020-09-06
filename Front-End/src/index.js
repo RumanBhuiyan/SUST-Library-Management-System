@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import "./css/index.css"; //not imported components of this file will be designed in index.css
