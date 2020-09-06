@@ -13,6 +13,11 @@ const adminSchema = new mongoose.Schema({
 
 const admin = mongoose.model("admins", adminSchema);
 
+const webinfoSchema = new mongoose.Schema({
+  adminLoggedIn: Boolean,
+});
+const webinfos = mongoose.model("webinfos", webinfoSchema);
+
 mongoose
   .connect(
     `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.ejbh7.mongodb.net/${process.env.DB_BOOKSDB}?retryWrites=true&w=majority`,
@@ -173,6 +178,32 @@ router.post("/admin/login", (req, response) => {
       }
     })
     .catch((err) => console.log(err));
+});
+
+router.get("/webinfo", (req, res) => {
+  webinfos
+    .find({})
+    .then((data) => {
+      res.send(data[0]);
+    })
+    .catch((err) => console.log(err));
+});
+
+router.post("/webinfo", (req, res) => {
+  webinfos.updateOne(
+    { _id: "5f547102e22ad95d5a397f37" },
+    { adminLoggedIn: req.body.adminLoggedIn },
+    (data, error) => {
+      if (error) {
+        console.log(error);
+      } else {
+        webinfos
+          .find({})
+          .then((data) => res.send(data))
+          .catch((error) => console.log(error));
+      }
+    }
+  );
 });
 
 module.exports = router;

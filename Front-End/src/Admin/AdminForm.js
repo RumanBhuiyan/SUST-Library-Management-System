@@ -47,12 +47,26 @@ function AdminForm() {
     })
       .then((res) => {
         if (res.data) {
+          axios({
+            method: "post",
+            url: "http://localhost:4000/webinfo",
+            data: {
+              adminLoggedIn: true,
+            },
+          })
+            .then((res) => {
+              console.log(res);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+          window.location.reload();
+        } else {
           setInfoStore({
             ...infoStore,
-            adminLoggedIn: res.data,
+            adminLoggedIn: false,
           });
-        } else {
-          window.location.reload();
+          alert("UserName or Password is wrong");
         }
       })
       .catch((error) => {

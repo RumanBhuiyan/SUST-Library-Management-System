@@ -3,6 +3,7 @@ import "./css/App.css"; //not imported components of this file will be designed 
 import Loader from "./Loader/Loader";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
+import axios from "axios";
 
 export const MyContext = React.createContext();
 const Provider = MyContext.Provider;
@@ -17,6 +18,18 @@ function App() {
     setTimeout(() => {
       setSpinner(false);
     }, 3000);
+
+    axios({
+      method: "get",
+      url: "http://localhost:4000/webinfo",
+    })
+      .then((data) => {
+        setInfoStore({
+          ...infoStore,
+          adminLoggedIn: data.data.adminLoggedIn,
+        });
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   return (
