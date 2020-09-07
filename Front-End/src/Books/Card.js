@@ -4,8 +4,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import { UserContext } from "../App";
+import { useHistory } from "react-router-dom";
 
 function Card(props) {
+  const history = useHistory();
+
   const { userStore } = React.useContext(UserContext);
 
   const [startDate, setStartDate] = useState(props.value.startdate);
@@ -44,23 +47,28 @@ function Card(props) {
   };
 
   const handleClick = () => {
-    axios({
-      method: "put",
-      url: "http://localhost:4000/data/updatebook",
-      data: {
-        bookname: props.value.bookname,
-        borrowedBy: userStore.userregno,
-        startdate: startDate,
-        enddate: endDate,
-      },
-    })
-      .then((res) => {
-        console.log(res);
+    if (!userStore.userLoggedIn) {
+      alert("Please Login First");
+      history.push("/login");
+    } else {
+      axios({
+        method: "put",
+        url: "http://localhost:4000/data/updatebook",
+        data: {
+          bookname: props.value.bookname,
+          borrowedBy: userStore.userregno,
+          startdate: startDate,
+          enddate: endDate,
+        },
       })
-      .catch((error) => {
-        console.log(error);
-      });
-    window.location.reload();
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      window.location.reload();
+    }
   };
 
   return (
