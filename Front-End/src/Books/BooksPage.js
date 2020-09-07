@@ -5,8 +5,11 @@ import Card from "./Card";
 import SearchIcon from "../images/search2.png";
 import { UserContext } from "../App";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 function BooksPage() {
+  const history = useHistory();
+
   const { userStore } = React.useContext(UserContext);
 
   useEffect(() => {
@@ -49,6 +52,26 @@ function BooksPage() {
 
   const itemsToDisplay = filterText ? filteredItems : Books;
 
+  const handleClick = () => {
+    axios({
+      method: "post",
+      url: "http://localhost:4000/userinfo",
+      data: {
+        userLoggedIn: false,
+        username: "",
+        userregno: "",
+      },
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    history.push("/home");
+    window.location.reload();
+  };
+
   return (
     <div className="container bookdiv ">
       <div className="searchdiv">
@@ -66,7 +89,16 @@ function BooksPage() {
           onChange={(e) => setFilterText(e.target.value.toLocaleLowerCase())}
         />
         {userStore.userLoggedIn ? (
-          <p className="username">{userStore.username}</p>
+          <>
+            <p className="username">{userStore.username}</p>
+            <button
+              data-micron="bounce"
+              id="logoutbtn"
+              onClick={() => handleClick()}
+            >
+              Logout
+            </button>
+          </>
         ) : (
           <p></p>
         )}
