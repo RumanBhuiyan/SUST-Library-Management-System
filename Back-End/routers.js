@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 require("dotenv").config();
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 const mongoose = require("mongoose");
 const Books = require("./Models");
@@ -17,6 +19,10 @@ const webinfoSchema = new mongoose.Schema({
   adminLoggedIn: Boolean,
 });
 const webinfos = mongoose.model("webinfos", webinfoSchema);
+
+const { Users } = require("./Models");
+
+const { Students } = require("./Models");
 
 mongoose
   .connect(
@@ -204,6 +210,64 @@ router.post("/webinfo", (req, res) => {
       }
     }
   );
+});
+
+router.post("/signup/data", (req, res) => {
+  const student = new Students({
+    username: req.body.username,
+    regno: req.body.regno,
+    gmail: req.body.gmail,
+    password: bcrypt.hashSync(req.body.password, saltRounds),
+  });
+  student.save();
+  res.send("Successfully Signed Up");
+});
+
+router.post("/login/data", (req, res) => {
+  Students.find({ username: req.body.username })
+    .then((data) => {
+      if (data.length <= 0) {
+        res.send(false);
+      } else {
+        let check = bcrypt.compareSync(req.body.password, data[0].password);
+        res.send(check);
+      }
+    })
+    .catch((error) => console.log(error));
+});
+
+router.get("/userinfo", (req, res) => {
+  Users.find({})
+    .then((data) => {
+      res.send(data[0]);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+router.post("/userinfo", (req, res) => {
+  Users.updateOne(
+    { _id: "5f54fa766fcf20098047ebaa" },
+    { ...req.body },
+    (data, error) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.send(data);
+      }
+    }
+  );
+});
+
+router.get("/userinfo/regno", (req, res) => {
+  Students.find({ username: req.query.username })
+    .then((data) => {
+      res.send(data[0]);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
 
 module.exports = router;

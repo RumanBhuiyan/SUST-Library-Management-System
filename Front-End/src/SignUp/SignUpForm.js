@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./SignUpDesign.css";
 import UserIcon from "../images/username.png";
 import RegIcon from "../images/registration.PNG";
@@ -9,11 +9,62 @@ import FacebookIcon from "../images/facebook.png";
 import gsap from "gsap";
 import jump from "../InputFieldJump";
 //import Ripples from "react-ripples"; //for ripple effects in buttons
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 function SignUpForm() {
+  const history = useHistory();
+
+  const [studentInfo, setStudentInfo] = useState({
+    username: "",
+    regno: "",
+    gmail: "",
+    password: "",
+  });
+
   useEffect(() => {
     gsap.from("form", { marginTop: -200, opacity: 0, duration: 2 });
   }, []);
+
+  const handleChange = (event) => {
+    if (event.target.name === "username") {
+      setStudentInfo({
+        ...studentInfo,
+        username: event.target.value,
+      });
+    } else if (event.target.name === "regno") {
+      setStudentInfo({
+        ...studentInfo,
+        regno: event.target.value,
+      });
+    } else if (event.target.name === "gmail") {
+      setStudentInfo({
+        ...studentInfo,
+        gmail: event.target.value,
+      });
+    } else {
+      setStudentInfo({
+        ...studentInfo,
+        password: event.target.value,
+      });
+    }
+  };
+
+  const handleClick = () => {
+    axios({
+      method: "post",
+      url: "http://localhost:4000/signup/data",
+      data: {
+        ...studentInfo,
+      },
+    })
+      .then((res) => {
+        history.push("/login");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div id="gradientdiv" className="col-lg-6 col-md-6 col-sm-12">
@@ -21,11 +72,7 @@ function SignUpForm() {
         <h3 id="signUpHeading">User SignUp</h3>
       </div>
       <div className="row justify-content-center text-center">
-        <form
-          action="/"
-          method="post"
-          className="signUpForm p-lg-5 p-md-4 p-sm-4 w-lg-85 w-md-75 w-sm-90"
-        >
+        <div className="signUpForm p-lg-5 p-md-4 p-sm-4 w-lg-85 w-md-75 w-sm-90">
           <div className="row justify-content-center text-center">
             <img
               className="formIcon rounded-circle"
@@ -38,10 +85,11 @@ function SignUpForm() {
             <input
               name="username"
               type="name"
-              placeholder="Your Name"
+              placeholder="Username"
               spellCheck={"false"}
               style={{ width: "90%", overflow: "hidden" }}
               onClick={(e) => jump(e)}
+              onChange={(e) => handleChange(e)}
             />
           </div>
           <div className="row justify-content-center text-center">
@@ -60,6 +108,7 @@ function SignUpForm() {
               spellCheck={"false"}
               style={{ width: "90%", overflow: "hidden" }}
               onClick={(e) => jump(e)}
+              onChange={(e) => handleChange(e)}
             />
           </div>
           <div className="row justify-content-center text-center">
@@ -72,12 +121,13 @@ function SignUpForm() {
           </div>
           <div className="row justify-content-center text-center">
             <input
-              name="email"
+              name="gmail"
               type="email"
               placeholder="Enter Gmail"
               spellCheck={"false"}
               style={{ width: "90%", overflow: "hidden" }}
               onClick={(e) => jump(e)}
+              onChange={(e) => handleChange(e)}
             />
           </div>
           <div className="row justify-content-center text-center">
@@ -96,14 +146,19 @@ function SignUpForm() {
               spellCheck={"false"}
               style={{ width: "90%", overflow: "hidden" }}
               onClick={(e) => jump(e)}
+              onChange={(e) => handleChange(e)}
             />
           </div>
           <div className="row justify-content-center text-center">
-            <button type="submit" className="myBtn" data-micron="bounce">
+            <button
+              className="myBtn"
+              data-micron="bounce"
+              onClick={() => handleClick()}
+            >
               Submit
             </button>
           </div>
-        </form>
+        </div>
       </div>
       <div className="row justify-content-center text-center">
         <div className="col">

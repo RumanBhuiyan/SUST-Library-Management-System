@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./LoginDesign.css";
 import UserIcon from "../images/username.png";
 import PassIcon from "../images/password.PNG";
@@ -7,13 +7,76 @@ import FacebookIcon from "../images/facebook.png";
 import { useHistory } from "react-router-dom";
 import gsap from "gsap/gsap-core";
 import jump from "../InputFieldJump";
+import axios from "axios";
+import { UserContext } from "../App";
 
 function LoginForm() {
   let history = useHistory();
 
+  const { userStore, setUserStore } = React.useContext(UserContext);
+
+  const [loginInfo, setLoginInfo] = useState({
+    username: "",
+    password: "",
+  });
+
   useEffect(() => {
-    gsap.from("form", { marginTop: -200, opacity: 0, duration: 2 });
+    gsap.from(".loginForm", { marginTop: -200, opacity: 0, duration: 2 });
   }, []);
+
+  //FIres when userStore get changed
+  // useEffect(() => {
+  //   console.log(userStore);
+  // }, [userStore]);
+
+  const handleChange = (event) => {
+    if (event.target.name === "username") {
+      setLoginInfo({
+        ...loginInfo,
+        username: event.target.value,
+      });
+    } else {
+      setLoginInfo({
+        ...loginInfo,
+        password: event.target.value,
+      });
+    }
+  };
+
+  const handleClick = () => {
+    axios({
+      method: "post",
+      url: "http://localhost:4000/login/data",
+      data: {
+        ...loginInfo,
+      },
+    })
+      .then((res) => {
+        if (res.data) {
+          axios({
+            method: "post",
+            url: "http://localhost:4000/userinfo",
+            data: {
+              userLoggedIn: true,
+              username: loginInfo.username,
+            },
+          })
+            .then((res) => {
+              console.log(res);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+          history.push("/books");
+          window.location.reload();
+        } else {
+          window.location.reload();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div
@@ -25,11 +88,7 @@ function LoginForm() {
         <h3 id="loginHeading">User Login</h3>
       </div>
       <div className="row justify-content-center text-center">
-        <form
-          action="/"
-          method="post"
-          className="loginForm p-lg-5 p-md-4 p-sm-4 w-lg-85 w-md-75 w-sm-90"
-        >
+        <div className="loginForm p-lg-5 p-md-4 p-sm-4 w-lg-85 w-md-75 w-sm-90">
           <div className="row justify-content-center text-center">
             <img
               className="rounded-circle"
@@ -47,6 +106,7 @@ function LoginForm() {
               spellCheck={"false"}
               style={{ width: "90%", overflow: "hidden" }}
               onClick={(e) => jump(e)}
+              onChange={(e) => handleChange(e)}
             />
           </div>
           <div className="row justify-content-center text-center">
@@ -66,11 +126,12 @@ function LoginForm() {
               spellCheck={"false"}
               style={{ width: "90%", overflow: "hidden" }}
               onClick={(e) => jump(e)}
+              onChange={(e) => handleChange(e)}
             />
           </div>
           <div className="row justify-content-center text-center">
             <button
-              type="submit"
+              onClick={() => handleClick()}
               className="myBtn"
               style={{ marginLeft: "0.3rem" }}
               data-micron="bounce"
@@ -91,7 +152,7 @@ function LoginForm() {
               SignUp Here
             </button>
           </div>
-        </form>
+        </div>
       </div>
       <div className="row justify-content-center text-center">
         <div className="col">

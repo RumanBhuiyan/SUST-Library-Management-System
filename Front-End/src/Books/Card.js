@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./BooksDesign.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import { UserContext } from "../App";
 
 function Card(props) {
+  const { userStore } = React.useContext(UserContext);
+
   const [startDate, setStartDate] = useState(props.value.startdate);
   const [endDate, setEndDate] = useState(props.value.enddate);
   const [availability, setAvailability] = useState(props.value.bookstatus);
-  //const [availability, setAvailability] = useState(true);
 
   //called every time when startDate changes
   // useEffect(() => {
@@ -47,7 +49,7 @@ function Card(props) {
       url: "http://localhost:4000/data/updatebook",
       data: {
         bookname: props.value.bookname,
-        borrowedBy: "2016331076",
+        borrowedBy: userStore.userregno,
         startdate: startDate,
         enddate: endDate,
       },

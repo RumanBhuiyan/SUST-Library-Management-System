@@ -3,14 +3,44 @@ import "./BooksDesign.css";
 import Books from "./Books";
 import Card from "./Card";
 import SearchIcon from "../images/search2.png";
+import { UserContext } from "../App";
+import axios from "axios";
 
 function BooksPage() {
+  const { userStore } = React.useContext(UserContext);
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+
+    axios({
+      method: "get",
+      url: "http://localhost:4000/userinfo/regno",
+      params: {
+        username: userStore.username,
+      },
+    })
+      .then((data) => {
+        //console.log(data.data.regno);
+        axios({
+          method: "post",
+          url: "http://localhost:4000/userinfo",
+          data: {
+            userregno: data.data.regno,
+          },
+        })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((error) => console.log(error));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
-  const [loggedIn, setLoggedIn] = useState(true);
-  //const [loggedIn, setLoggedIn] = useState(false);
+  // useEffect(() => {
+  //   window.location.reload();
+  // }, [userStore]);
 
   const [filterText, setFilterText] = useState("");
   const filteredItems = Books.filter((item) =>
@@ -35,7 +65,11 @@ function BooksPage() {
           spellCheck="false"
           onChange={(e) => setFilterText(e.target.value.toLocaleLowerCase())}
         />
-        {loggedIn ? <p className="username">Ruman</p> : <p></p>}
+        {userStore.userLoggedIn ? (
+          <p className="username">{userStore.username}</p>
+        ) : (
+          <p></p>
+        )}
       </div>
       <div className="row justify-content-center text-center">
         {itemsToDisplay.map((item) => {

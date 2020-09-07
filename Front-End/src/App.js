@@ -8,9 +8,18 @@ import axios from "axios";
 export const MyContext = React.createContext();
 const Provider = MyContext.Provider;
 
+export const UserContext = React.createContext();
+const UserProvider = UserContext.Provider;
+
 function App() {
   const [infoStore, setInfoStore] = useState({
     adminLoggedIn: false,
+  });
+
+  const [userStore, setUserStore] = useState({
+    userLoggedIn: false,
+    username: "",
+    userregno: "",
   });
 
   const [spinner, setSpinner] = useState(true);
@@ -30,19 +39,41 @@ function App() {
         });
       })
       .catch((error) => console.log(error));
+
+    axios({
+      method: "get",
+      url: "http://localhost:4000/userinfo",
+    })
+      .then((data) => {
+        setUserStore({
+          userLoggedIn: data.data.userLoggedIn,
+          username: data.data.username,
+          userregno: data.data.userregno,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
+
+  //To see changes of data assigning use this method,don't check immediately after data assigning
+  // useEffect(() => {
+  //   console.log(userStore);
+  // }, [userStore]);
 
   return (
     <div>
       <Provider value={{ infoStore, setInfoStore }}>
-        {spinner ? (
-          <Loader />
-        ) : (
-          <div>
-            <Navbar />
-            <Footer />
-          </div>
-        )}
+        <UserProvider value={{ userStore, setUserStore }}>
+          {spinner ? (
+            <Loader />
+          ) : (
+            <div>
+              <Navbar />
+              <Footer />
+            </div>
+          )}
+        </UserProvider>
       </Provider>
     </div>
   );
