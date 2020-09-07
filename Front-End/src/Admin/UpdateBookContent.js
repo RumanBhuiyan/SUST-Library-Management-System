@@ -97,7 +97,7 @@ function UpdateBookContent() {
       <div className="row justify-content-center text-center">
         <input
           name="currentUser"
-          placeholder="gmail or reg.no."
+          placeholder="reg.no."
           spellCheck={false}
           style={{ width: "90%", overflow: "hidden" }}
           onClick={(e) => jump(e)}

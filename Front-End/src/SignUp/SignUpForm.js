@@ -14,6 +14,10 @@ import { useHistory } from "react-router-dom";
 import Validator from "validator";
 
 function SignUpForm() {
+  const [checkname, setCheckName] = useState(false);
+  const [checkreg, setCheckReg] = useState(false);
+  const [checkgmail, setCheckGmail] = useState(false);
+
   const history = useHistory();
 
   const [studentInfo, setStudentInfo] = useState({
@@ -95,6 +99,75 @@ function SignUpForm() {
         });
     }
   };
+
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: "http://localhost:4000/signup/checkname",
+      params: {
+        username: studentInfo.username,
+      },
+    })
+      .then((data) => {
+        setCheckName(data.data);
+      })
+      .catch((error) => console.log(error));
+    if (checkname) {
+      alert("Username Taken");
+      setStudentInfo({
+        ...studentInfo,
+        username: "",
+      });
+      setCheckName(false);
+      window.location.reload();
+    }
+  }, [studentInfo.username, checkname]);
+
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: "http://localhost:4000/signup/checkreg",
+      params: {
+        regno: studentInfo.regno,
+      },
+    })
+      .then((data) => {
+        setCheckReg(data.data);
+      })
+      .catch((error) => console.log(error));
+    if (checkreg) {
+      alert("Registration Number Taken");
+      setStudentInfo({
+        ...studentInfo,
+        regno: "",
+      });
+      setCheckReg(false);
+      window.location.reload();
+    }
+  }, [studentInfo.regno, checkreg]);
+
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: "http://localhost:4000/signup/checkgmail",
+      params: {
+        gmail: studentInfo.gmail,
+      },
+    })
+      .then((data) => {
+        setCheckGmail(data.data);
+      })
+      .catch((error) => console.log(error));
+    if (checkgmail) {
+      alert("Gmail Already Taken");
+      setStudentInfo({
+        ...studentInfo,
+        gmail: "",
+      });
+      setCheckGmail(false);
+      window.location.reload();
+    }
+  }, [studentInfo.gmail, checkgmail]);
 
   return (
     <div id="gradientdiv" className="col-lg-6 col-md-6 col-sm-12">

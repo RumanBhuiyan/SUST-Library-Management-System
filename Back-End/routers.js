@@ -270,4 +270,49 @@ router.get("/userinfo/regno", (req, res) => {
     });
 });
 
+router.get("/signup/checkname", (req, res) => {
+  if (req.query.username) {
+    Students.find({ username: req.query.username })
+      .then((data) => {
+        if (data.length === 0) {
+          res.send(false);
+        }
+        res.send(true);
+      })
+      .catch((error) => {
+        res.send(error);
+      });
+  }
+});
+
+router.get("/signup/checkreg", (req, res) => {
+  if (req.query.regno) {
+    Students.find({ regno: req.query.regno })
+      .then((data) => {
+        if (data.length === 0) {
+          res.send(false);
+        }
+        res.send(true);
+      })
+      .catch((error) => {
+        res.send(error);
+      });
+  }
+});
+
+router.get("/signup/checkgmail", (req, res) => {
+  if (req.query.gmail) {
+    Students.find({ gmail: req.query.gmail })
+      .then((data) => {
+        if (data.length === 0) {
+          res.send(false);
+        }
+        res.send(true);
+      })
+      .catch((error) => {
+        res.send(error);
+      });
+  }
+});
+
 module.exports = router;
