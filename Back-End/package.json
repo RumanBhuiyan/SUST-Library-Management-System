@@ -18,6 +18,7 @@
     "express": "^4.17.1",
     "http-proxy-middleware": "^1.0.5",
     "mongoose": "^5.10.2",
-    "nodemailer": "^6.4.11"
+    "nodemailer": "^6.4.11",
+    "validator": "^13.1.1"
   }
 }

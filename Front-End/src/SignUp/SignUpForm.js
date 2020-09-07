@@ -11,6 +11,7 @@ import jump from "../InputFieldJump";
 //import Ripples from "react-ripples"; //for ripple effects in buttons
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import Validator from "validator";
 
 function SignUpForm() {
   const history = useHistory();
@@ -51,19 +52,48 @@ function SignUpForm() {
   };
 
   const handleClick = () => {
-    axios({
-      method: "post",
-      url: "http://localhost:4000/signup/data",
-      data: {
+    if (Validator.isEmpty(studentInfo.username)) {
+      alert("Username Cant be Null");
+      setStudentInfo({
         ...studentInfo,
-      },
-    })
-      .then((res) => {
-        history.push("/login");
-      })
-      .catch((error) => {
-        console.log(error);
+        username: "",
       });
+    } else if (
+      studentInfo.regno.toString().indexOf("331") === -1 ||
+      studentInfo.regno.length != 10
+    ) {
+      alert("Enter a valid Registration Number");
+      setStudentInfo({
+        ...studentInfo,
+        regno: "",
+      });
+    } else if (studentInfo.gmail.indexOf("@gmail.com") === -1) {
+      alert("Enter a Valid Gmail");
+      setStudentInfo({
+        ...studentInfo,
+        gmail: "",
+      });
+    } else if (studentInfo.password.length < 6) {
+      alert("Password length must be greater than 6");
+      setStudentInfo({
+        ...studentInfo,
+        password: "",
+      });
+    } else {
+      axios({
+        method: "post",
+        url: "http://localhost:4000/signup/data",
+        data: {
+          ...studentInfo,
+        },
+      })
+        .then((res) => {
+          history.push("/login");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   return (
