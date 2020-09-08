@@ -8,8 +8,15 @@ import { useHistory } from "react-router-dom";
 import gsap from "gsap/gsap-core";
 import jump from "../InputFieldJump";
 import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
+import $ from "jquery";
 
 function LoginForm() {
+  //const { loginWithRedirect } = useAuth0();
+  const { loginWithPopup } = useAuth0();
+  //const { logout } = useAuth0();
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
   let history = useHistory();
 
   const [loginInfo, setLoginInfo] = useState({
@@ -75,6 +82,17 @@ function LoginForm() {
       });
   };
 
+  useEffect(() => {
+    setLoginInfo({
+      ...loginInfo,
+      username: user.nickname,
+      password: user.nickname,
+    });
+    $("#usernameField").val(user.nickname);
+    $("#passwordField").val(user.nickname);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, isAuthenticated, isLoading]);
+
   return (
     <div
       id="logindiv"
@@ -97,6 +115,7 @@ function LoginForm() {
           </div>
           <div className="row justify-content-center text-center">
             <input
+              id="usernameField"
               name="username"
               type="name"
               placeholder="User Name"
@@ -117,6 +136,7 @@ function LoginForm() {
           </div>
           <div className="row justify-content-center text-center">
             <input
+              id="passwordField"
               name="password"
               type="password"
               placeholder="Password"
@@ -153,7 +173,11 @@ function LoginForm() {
       </div>
       <div className="row justify-content-center text-center">
         <div className="col">
-          <button className="loginButton" data-micron="pop">
+          <button
+            onClick={() => loginWithPopup()}
+            className="loginButton"
+            data-micron="pop"
+          >
             <img
               className="rounded-circle"
               src={GoogleIcon}
@@ -164,7 +188,11 @@ function LoginForm() {
           </button>
         </div>
         <div className="col">
-          <button className="loginButton" data-micron="pop">
+          <button
+            onClick={() => loginWithPopup()}
+            className="loginButton"
+            data-micron="pop"
+          >
             <img
               className="rounded-circle"
               src={FacebookIcon}

@@ -12,8 +12,15 @@ import jump from "../InputFieldJump";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Validator from "validator";
+import { useAuth0 } from "@auth0/auth0-react";
+import $ from "jquery";
 
 function SignUpForm() {
+  //const { loginWithRedirect } = useAuth0();
+  const { loginWithPopup } = useAuth0();
+  //const { logout } = useAuth0();
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
   const [checkname, setCheckName] = useState(false);
   const [checkreg, setCheckReg] = useState(false);
   const [checkgmail, setCheckGmail] = useState(false);
@@ -175,6 +182,20 @@ function SignUpForm() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [studentInfo.gmail, checkgmail]);
 
+  useEffect(() => {
+    setStudentInfo({
+      ...studentInfo,
+      username: user.nickname,
+      gmail: user.email,
+      password: user.nickname,
+    });
+    $("#usernameField").val(user.nickname);
+    $("#gmailField").val(user.email);
+    $("#passwordField").val(user.nickname);
+    //history.push("/signup");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, isAuthenticated, isLoading]);
+
   return (
     <div id="gradientdiv" className="col-lg-6 col-md-6 col-sm-12">
       <div className="row justify-content-center text-center signUpDiv">
@@ -192,6 +213,7 @@ function SignUpForm() {
           </div>
           <div className="row justify-content-center text-center">
             <input
+              id="usernameField"
               name="username"
               type="name"
               placeholder="Username"
@@ -230,6 +252,7 @@ function SignUpForm() {
           </div>
           <div className="row justify-content-center text-center">
             <input
+              id="gmailField"
               name="gmail"
               type="email"
               placeholder="Enter Gmail"
@@ -249,6 +272,7 @@ function SignUpForm() {
           </div>
           <div className="row justify-content-center text-center">
             <input
+              id="passwordField"
               name="password"
               type="password"
               placeholder="Your Password"
@@ -271,7 +295,13 @@ function SignUpForm() {
       </div>
       <div className="row justify-content-center text-center">
         <div className="col">
-          <button className="signInButton" data-micron="pop">
+          <button
+            onClick={async () => {
+              loginWithPopup();
+            }}
+            className="signInButton"
+            data-micron="pop"
+          >
             <img
               className="rounded-circle"
               src={GoogleIcon}
@@ -282,7 +312,11 @@ function SignUpForm() {
           </button>
         </div>
         <div className="col">
-          <button className="signInButton mb-3" data-micron="pop">
+          <button
+            onClick={() => loginWithPopup()}
+            className="signInButton mb-3"
+            data-micron="pop"
+          >
             <img
               className="rounded-circle"
               src={FacebookIcon}

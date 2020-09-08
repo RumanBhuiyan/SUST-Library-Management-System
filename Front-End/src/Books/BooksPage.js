@@ -6,8 +6,11 @@ import SearchIcon from "../images/search2.png";
 import { UserContext } from "../App";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function BooksPage() {
+  const { logout } = useAuth0();
+
   const history = useHistory();
 
   const { userStore } = React.useContext(UserContext);
@@ -94,7 +97,10 @@ function BooksPage() {
             <button
               data-micron="bounce"
               id="logoutbtn"
-              onClick={() => handleClick()}
+              onClick={() => {
+                handleClick();
+                logout({ returnTo: window.location.origin });
+              }}
             >
               Logout
             </button>

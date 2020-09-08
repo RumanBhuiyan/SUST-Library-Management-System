@@ -3,9 +3,12 @@ import "./AdminDesign.css";
 import { Redirect } from "react-router-dom";
 import { MyContext } from "../App";
 import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function LogoutContent() {
   const { infoStore, setInfoStore } = React.useContext(MyContext);
+
+  const { logout } = useAuth0();
 
   useEffect(() => {
     setInfoStore({
@@ -26,7 +29,9 @@ function LogoutContent() {
       .catch((error) => {
         console.log(error);
       });
-  });
+    logout({ returnTo: window.location.origin });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>

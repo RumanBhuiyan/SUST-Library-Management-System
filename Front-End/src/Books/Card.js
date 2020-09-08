@@ -56,7 +56,9 @@ function Card(props) {
         url: "http://localhost:4000/data/updatebook",
         data: {
           bookname: props.value.bookname,
-          borrowedBy: userStore.userregno,
+          borrowedBy: userStore.userregno.length
+            ? userStore.userregno
+            : userStore.username,
           startdate: startDate,
           enddate: endDate,
         },

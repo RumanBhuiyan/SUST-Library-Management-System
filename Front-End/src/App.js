@@ -4,6 +4,8 @@ import Loader from "./Loader/Loader";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
 import axios from "axios";
+import dotenv from "dotenv";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 export const MyContext = React.createContext();
 const Provider = MyContext.Provider;
@@ -11,6 +13,7 @@ const Provider = MyContext.Provider;
 export const UserContext = React.createContext();
 const UserProvider = UserContext.Provider;
 
+dotenv.config();
 function App() {
   const [infoStore, setInfoStore] = useState({
     adminLoggedIn: false,
@@ -66,18 +69,24 @@ function App() {
 
   return (
     <div>
-      <Provider value={{ infoStore, setInfoStore }}>
-        <UserProvider value={{ userStore, setUserStore }}>
-          {spinner ? (
-            <Loader />
-          ) : (
-            <div>
-              <Navbar />
-              <Footer />
-            </div>
-          )}
-        </UserProvider>
-      </Provider>
+      <Auth0Provider
+        domain={process.env.REACT_APP_AUTH0_DOMAIN}
+        clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
+        redirectUri="http://localhost:3000/admin"
+      >
+        <Provider value={{ infoStore, setInfoStore }}>
+          <UserProvider value={{ userStore, setUserStore }}>
+            {spinner ? (
+              <Loader />
+            ) : (
+              <div>
+                <Navbar />
+                <Footer />
+              </div>
+            )}
+          </UserProvider>
+        </Provider>
+      </Auth0Provider>
     </div>
   );
 }

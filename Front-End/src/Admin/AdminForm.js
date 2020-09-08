@@ -8,8 +8,14 @@ import gsap from "gsap";
 import jump from "../InputFieldJump";
 import { MyContext } from "../App";
 import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
+import $ from "jquery";
 
 function AdminForm() {
+  const { loginWithRedirect } = useAuth0();
+  //const { logout } = useAuth0();
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
   const { infoStore, setInfoStore } = React.useContext(MyContext);
 
   const [adminInfo, setAdminInfo] = useState({
@@ -74,6 +80,17 @@ function AdminForm() {
       });
   };
 
+  useEffect(() => {
+    setAdminInfo({
+      ...adminInfo,
+      username: user.nickname,
+      password: user.nickname,
+    });
+    $(".nameField").val(user.nickname);
+    $(".passwordField").val(user.nickname);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, isAuthenticated, isLoading]);
+
   return (
     <div id="admindiv" className="col-lg-6 col-md-6 col-sm-12">
       <div className="row justify-content-center text-center adminFullDiv">
@@ -113,6 +130,7 @@ function AdminForm() {
           </div>
           <div className="row justify-content-center text-center">
             <input
+              className="passwordField"
               name="password"
               type="password"
               placeholder="Password"
@@ -125,7 +143,6 @@ function AdminForm() {
           <div className="row justify-content-center text-center">
             <button
               id="submitbtn"
-              // type="submit"
               className="myBtn"
               data-micron="bounce"
               onClick={() => handleClick()}
@@ -137,7 +154,11 @@ function AdminForm() {
       </div>
       <div className="row justify-content-center text-center">
         <div className="col">
-          <button className="socialButtons" data-micron="pop">
+          <button
+            onClick={() => loginWithRedirect()}
+            className="socialButtons"
+            data-micron="pop"
+          >
             <img
               className="rounded-circle"
               src={GoogleIcon}
@@ -148,7 +169,11 @@ function AdminForm() {
           </button>
         </div>
         <div className="col">
-          <button className="socialButtons" data-micron="pop">
+          <button
+            onClick={() => loginWithRedirect()}
+            className="socialButtons"
+            data-micron="pop"
+          >
             <img
               className="rounded-circle"
               src={FacebookIcon}
