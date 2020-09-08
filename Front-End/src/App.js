@@ -23,6 +23,7 @@ function App() {
   });
 
   const [spinner, setSpinner] = useState(true);
+
   useEffect(() => {
     setTimeout(() => {
       setSpinner(false);
@@ -54,6 +55,8 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
+    // below comment tells eslint to ignore useEffect missing dependencies
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //To see changes of data assigning use this method,don't check immediately after data assigning

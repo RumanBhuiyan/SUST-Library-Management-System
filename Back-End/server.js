@@ -12,6 +12,7 @@ const router = require("./routers");
 app.use(router);
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
+app.disable("etag");
 
 app.listen("4000", () => {
   console.log("Back-End Running at port 4000");

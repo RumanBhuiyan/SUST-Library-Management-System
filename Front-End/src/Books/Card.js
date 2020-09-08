@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./BooksDesign.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -13,7 +13,7 @@ function Card(props) {
 
   const [startDate, setStartDate] = useState(props.value.startdate);
   const [endDate, setEndDate] = useState(props.value.enddate);
-  const [availability, setAvailability] = useState(props.value.bookstatus);
+  //const [availability, setAvailability] = useState(props.value.bookstatus);
 
   //called every time when startDate changes
   // useEffect(() => {
@@ -83,9 +83,9 @@ function Card(props) {
         />
         <div className="card-body">
           <h5 className="card-title">{props.value.bookname}</h5>
-          {availability === "Available" ? (
+          {props.value.bookstatus === "Available" ? (
             <div>
-              <p className="card-text">Status : {availability}</p>
+              <p className="card-text">Status : {props.value.bookstatus}</p>
               <div className="datepicker">
                 <DatePicker
                   selected={startDate}

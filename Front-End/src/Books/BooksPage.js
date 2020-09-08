@@ -39,7 +39,7 @@ function BooksPage() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  });
 
   // useEffect(() => {
   //   window.location.reload();

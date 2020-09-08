@@ -271,47 +271,62 @@ router.get("/userinfo/regno", (req, res) => {
 });
 
 router.get("/signup/checkname", (req, res) => {
-  if (req.query.username) {
-    Students.find({ username: req.query.username })
-      .then((data) => {
-        if (data.length === 0) {
-          res.send(false);
-        }
-        res.send(true);
-      })
-      .catch((error) => {
-        res.send(error);
-      });
+  try {
+    if (req.query.username) {
+      Students.find({ username: req.query.username })
+        .then((data) => {
+          if (data.length === 0) {
+            return res.send(false);
+          }
+          return res.send(true);
+        })
+        .catch((error) => {
+          return res.send(error);
+        });
+    }
+  } catch (error) {
+    console.log(error);
   }
 });
 
 router.get("/signup/checkreg", (req, res) => {
-  if (req.query.regno) {
-    Students.find({ regno: req.query.regno })
-      .then((data) => {
-        if (data.length === 0) {
-          res.send(false);
-        }
-        res.send(true);
-      })
-      .catch((error) => {
-        res.send(error);
-      });
+  try {
+    if (req.query.regno) {
+      Students.find({ regno: req.query.regno })
+        .then((data) => {
+          if (data.length === 0) {
+            return res.send(false);
+          }
+          return res.send(true);
+        })
+        .catch((error) => {
+          return res.send(error);
+        });
+    }
+  } catch (error) {
+    console.log(error);
   }
 });
 
 router.get("/signup/checkgmail", (req, res) => {
-  if (req.query.gmail) {
-    Students.find({ gmail: req.query.gmail })
-      .then((data) => {
-        if (data.length === 0) {
-          res.send(false);
-        }
-        res.send(true);
-      })
-      .catch((error) => {
-        res.send(error);
-      });
+  try {
+    if (req.query.gmail) {
+      Students.find({ gmail: req.query.gmail })
+        .then((data) => {
+          if (data.length === 0) {
+            //use return res.send(false) instead of res.send(false);
+            //because it prevents sending more responses than one
+            //otherwise you'll get an error cant set header to client
+            return res.send(false);
+          }
+          return res.send(true);
+        })
+        .catch((error) => {
+          return res.send(error);
+        });
+    }
+  } catch (error) {
+    console.log(error);
   }
 });
 

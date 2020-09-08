@@ -8,12 +8,9 @@ import { useHistory } from "react-router-dom";
 import gsap from "gsap/gsap-core";
 import jump from "../InputFieldJump";
 import axios from "axios";
-import { UserContext } from "../App";
 
 function LoginForm() {
   let history = useHistory();
-
-  const { userStore, setUserStore } = React.useContext(UserContext);
 
   const [loginInfo, setLoginInfo] = useState({
     username: "",

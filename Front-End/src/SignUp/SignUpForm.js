@@ -28,7 +28,7 @@ function SignUpForm() {
   });
 
   useEffect(() => {
-    gsap.from("form", { marginTop: -200, opacity: 0, duration: 2 });
+    gsap.from(".signUpForm", { marginTop: -200, opacity: 0, duration: 2 });
   }, []);
 
   const handleChange = (event) => {
@@ -64,7 +64,7 @@ function SignUpForm() {
       });
     } else if (
       studentInfo.regno.toString().indexOf("331") === -1 ||
-      studentInfo.regno.length != 10
+      studentInfo.regno.length !== 10
     ) {
       alert("Enter a valid Registration Number");
       setStudentInfo({
@@ -121,6 +121,8 @@ function SignUpForm() {
       setCheckName(false);
       window.location.reload();
     }
+    // below comment tells eslint to ignore useEffect missing dependencies
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [studentInfo.username, checkname]);
 
   useEffect(() => {
@@ -144,6 +146,8 @@ function SignUpForm() {
       setCheckReg(false);
       window.location.reload();
     }
+    // below comment tells eslint to ignore useEffect missing dependencies
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [studentInfo.regno, checkreg]);
 
   useEffect(() => {
@@ -167,6 +171,8 @@ function SignUpForm() {
       setCheckGmail(false);
       window.location.reload();
     }
+    // below comment tells eslint to ignore useEffect missing dependencies
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [studentInfo.gmail, checkgmail]);
 
   return (
